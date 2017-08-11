@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="p1">進食</string>
+    <string name="p1c1">10分\t自己在合理時間內（約 10 秒鐘吃一口飯）可用筷子取食眼前的食物，若需使用進食輔具時，應會自行穿脫。</string>
+    <string name="p1c2">5分\t需別人幫忙穿脫輔具或只會用湯匙進食。</string>
+    <string name="p1c3">0分\t無法自行取食或耗費時間過長。</string>
+
+    <string name="p2">洗澡</string>
+    <string name="p2c1">5分\t可獨立完成，不需別人在旁(不論是盆浴或淋浴)。</string>
+    <string name="p2c2">0分\t需別人協助。</string>
+
+    <string name="p3">個人衛生</string>
+    <string name="p3c1">5分\t可獨立完成洗臉、洗手、刷牙及梳頭髮。</string>
+    <string name="p3c2">0分\t需別人協助。</string>
+
+    <string name="p4">穿脫衣服</string>
+    <string name="p4c1">10分\t可自行穿脫衣服、褲子、鞋子、及輔具等。</string>
+    <string name="p4c2">5分\t在別人協助下，可自行完成一半的動作。</string>
+    <string name="p4c3">0分\t需別人協助。</string>
+
+    <string name="p5">排便控制</string>
+    <string name="p5c1">10分\t不會失禁，並可自行使用塞劑。</string>
+    <string name="p5c2">5分\t偶而會失禁(每週不超過一次)或使用塞劑時需別人協助。</string>
+    <string name="p5c3">0分\t完全依賴。</string>
+
+    <string name="p6">排尿控制</string>
+    <string name="p6c1">10分\t日夜皆不會尿失禁，或可自行使用並清理尿套。</string>
+    <string name="p6c2">5分\t偶而會尿失禁(每週不超過一次)或尿急(無法等待便盆或無法及時敢到廁所)或需別人幫忙處理尿套。</string>
+    <string name="p6c3">0分\t完全依賴。</string>
+
+    <string name="p7">如廁</string>
+    <string name="p7c1">10分\t可自行進出廁所，不會弄髒衣服並能穿好衣服使用便盆者，可自行清理便盆，</string>
+    <string name="p7c2">5分\t需幫忙保持姿勢的平衡、整理以物或使用衛生紙，使用便盆者，可自行取放便盆但須仰賴他人清理。</string>
+    <string name="p7c3">0分\t需別人協助。</string>
+
+    <string name="p8">移位(輪椅與床位間的移動)</string>
+    <string name="p8c1">15分\t可獨立完成，包括輪椅的煞車及移開腳踏板。</string>
+    <string name="p8c2">10分\t需要稍微的協助(例如：予以輕扶以保持平衡)或需要口頭指導。</string>
+    <string name="p8c3">5分\t可自行從床上坐起來，但移位時仍需要人幫忙。</string>
+    <string name="p8c4">0分\t需別人協助可坐起來或需要兩人幫忙方可移位。</string>
+
+    <string name="p9">步行</string>
+    <string name="p9c1">15分\t使用或不使用輔具皆可獨立行走 50 公尺以上。</string>
+    <string name="p9c2">10分\t需要稍微扶持或口頭指導方可行走 50 公尺以上。</string>
+    <string name="p9c3">5分\t雖無法行走，但可獨自操縱輪椅(包括轉彎、進門、及接近桌子、床沿)並可推行輪椅 50 公尺以上。</string>
+    <string name="p9c4">0分\t需別人協助推輪椅。</string>
+
+    <string name="p10">上下樓梯</string>
+    <string name="p10c1">10分\t可自行上下樓梯(允許抓扶手、用拐杖)。</string>
+    <string name="p10c2">5分\t需稍微協助或口頭指導。</string>
+    <string name="p10c3">0分\t無法上下樓梯。</string>
+
+    <string name="I1">上街購物</string>
+    <string name="I1c1">4\t不適用</string>
+    <string name="I1c2">3\t獨立完成所有購物需求</string>
+    <string name="I1c3">2\t獨立購買日常生活用品</string>
+    <string name="I1c4">1\t每一次上街購物都需要有人陪</string>
+    <string name="I1c5">0\t完全不會上街購物</string>
+
+    <string name="I2">外出活動</string>
+    <string name="I2c1">5\t不適用</string>
+    <string name="I2c2">4\t能夠自己開車、騎車</string>
+    <string name="I2c3">3\t能夠自己搭乘大眾運輸工具</string>
+    <string name="I2c4">2\t能夠自己搭乘計程車但不會搭乘大眾運輸工具</string>
+    <string name="I2c5">1\t當有人陪同可搭計程車或大眾運輸工具</string>
+    <string name="I2c6">0\t完全不能出門</string>
+
+    <string name="I3">食物烹調</string>
+    <string name="I3c1">4\t不適用</string>
+    <string name="I3c2">3\t能獨立計畫、烹煮和擺設一頓適當的飯菜</string>
+    <string name="I3c3">2\t如果準備好一切佐料，會做一頓適當的飯菜</string>
+    <string name="I3c4">1\t會將已做好的飯菜加熱</string>
+    <string name="I3c5">0\t需要別人把飯菜煮好、擺好</string>
+
+    <string name="I4">家務維持</string>
+    <string name="I4c1">5\t不適用</string>
+    <string name="I4c2">4\t能做較繁重的家事或需偶爾家事協助（如搬動沙發、擦地板、洗窗戶）</string>
+    <string name="I4c3">3\t能做較簡單的家事，如洗碗、鋪床、疊被</string>
+    <string name="I4c4">2\t能做家事，但不能達到可被接受的整潔程度</string>
+    <string name="I4c5">1\t所有的家事都需要別人協助</string>
+    <string name="I4c6">0\t完全不會做家事</string>
+
+    <string name="I5">洗衣服</string>
+    <string name="I5c1">3\t不適用</string>
+    <string name="I5c2">2\t自己清洗所有衣物</string>
+    <string name="I5c3">1\t只清洗小件衣物</string>
+    <string name="I5c4">0\t完全依賴他人</string>
+
+    <string name="I6">使用電話的能力</string>
+    <string name="I6c1">4\t不適用</string>
+    <string name="I6c2">3\t獨立使用電話，含查電話簿、撥號等</string>
+    <string name="I6c3">2\t僅可撥熟悉的電話號碼</string>
+    <string name="I6c4">1\t僅會接電話，不會撥電話</string>
+    <string name="I6c5">0\t完全不會使用電話</string>
+
+    <string name="I7">服用藥物</string>
+    <string name="I7c1">4\t不適用</string>
+    <string name="I7c2">3\t能自己負責在正確的時間用正確的藥物</string>
+    <string name="I7c3">2\t需要提醒或少許協助</string>
+    <string name="I7c4">1\t如果事先準備好服用的藥物份量，可自行服用</string>
+    <string name="I7c5">0\t不能自己服用藥物</string>
+
+    <string name="I8">處理財務能力</string>
+    <string name="I8c1">3\t不適用</string>
+    <string name="I8c2">2\t可以獨立處理財務</string>
+    <string name="I8c3">1\t可以處理日常的購買，但需要別人協助與銀行往來或大宗買賣</string>
+    <string name="I8c4">0\t不能處理錢財</string>
+</resources>
