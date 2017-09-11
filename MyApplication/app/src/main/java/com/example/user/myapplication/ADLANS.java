@@ -57,6 +57,36 @@ public class ADLANS extends AppCompatActivity {
         }
 
 
+
+
+
+        /*
+        //寫檔
+        SQLiteDatabase mydatabase = openOrCreateDatabase("data",MODE_PRIVATE,null);
+
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS adl(id VARCHAR,ans VARCHAR);");
+        mydatabase.execSQL("INSERT INTO adl VALUES('"+
+                ""+//流水號?
+                "','"+
+                temp+
+                "');");
+                */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /*
         if(bundle.getInt("分數")>=65)
         {

@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.content.IntentFilter;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.example.user.myapplication.NetWorkStateReceiver;
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 
@@ -49,7 +51,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        BootstrapButton qq4=(BootstrapButton) findViewById(R.id.button4);
+        qq4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                BootstrapButton qq44=(BootstrapButton) v;
+                if(qq44.getText().equals("可以上傳")){
+                    qq44.setBootstrapBrand(DefaultBootstrapBrand.DANGER);//到時候改成跳出上傳進度視窗
+                }
+
+
+            }
+        });
     }
     //註冊廣播 監聽網路狀態
     @Override

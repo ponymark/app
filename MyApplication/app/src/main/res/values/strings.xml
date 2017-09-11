@@ -106,4 +106,228 @@
     <string name="I8c2">2\t可以獨立處理財務</string>
     <string name="I8c3">1\t可以處理日常的購買，但需要別人協助與銀行往來或大宗買賣</string>
     <string name="I8c4">0\t不能處理錢財</string>
+
+    <string name="W1">整體來說，您如何評價您的生活品質?</string>
+    <string name="W1c1">1\t極不好</string>
+    <string name="W1c2">2\t不好</string>
+    <string name="W1c3">3\t中等程度好</string>
+    <string name="W1c4">4\t好</string>
+    <string name="W1c5">5\t極好</string>
+    <string name="W1c6">99\t遺漏值</string>
+
+    <string name="W2">整體來說，您滿意自己的健康嗎?</string>
+    <string name="W2c1">1\t極不滿意</string>
+    <string name="W2c2">2\t不滿意</string>
+    <string name="W2c3">3\t中等程度滿意</string>
+    <string name="W2c4">4\t滿意</string>
+    <string name="W2c5">5\t極滿意</string>
+    <string name="W2c6">99\t遺漏值</string>
+
+    <string name="W3">您覺得身體疼痛會妨礙您處理需要做的事情嗎?</string>
+    <string name="W3c1">1\t完全沒有妨礙</string>
+    <string name="W3c2">2\t有一點妨礙</string>
+    <string name="W3c3">3\t中等程度妨礙</string>
+    <string name="W3c4">4\t很妨礙</string>
+    <string name="W3c5">5\t極妨礙</string>
+    <string name="W3c6">99\t遺漏值</string>
+
+    <string name="W4">您需要靠醫療的幫助應付日常生活嗎?</string>
+    <string name="W4c1">1\t完全沒有需要</string>
+    <string name="W4c2">2\t有一點需要</string>
+    <string name="W4c3">3\t中等程度需要</string>
+    <string name="W4c4">4\t很需要</string>
+    <string name="W4c5">5\t極需要</string>
+    <string name="W4c6">99\t遺漏值</string>
+
+    <string name="W5">您享受生活嗎?</string>
+    <string name="W5c1">1\t完全沒有享受</string>
+    <string name="W5c2">2\t有一點享受</string>
+    <string name="W5c3">3\t中等程度享受</string>
+    <string name="W5c4">4\t很享受</string>
+    <string name="W5c5">5\t極享受</string>
+    <string name="W5c6">99\t遺漏值</string>
+
+    <string name="W6">您覺得自己的生命有意義嗎?</string>
+    <string name="W6c1">1\t完全沒有</string>
+    <string name="W6c2">2\t有一點有</string>
+    <string name="W6c3">3\t中等程度有</string>
+    <string name="W6c4">4\t很有</string>
+    <string name="W6c5">5\t極有</string>
+    <string name="W6c6">99\t遺漏值</string>
+
+    <string name="W7">您集中精神（含思考、學習、記憶）的能力有多好?</string>
+    <string name="W7c1">1\t完全不好</string>
+    <string name="W7c2">2\t有一點好</string>
+    <string name="W7c3">3\t中等程度好</string>
+    <string name="W7c4">4\t很好</string>
+    <string name="W7c5">5\t極好</string>
+    <string name="W7c6">99\t遺漏值</string>
+
+    <string name="W8">在日常生活中，您感到安全嗎?</string>
+    <string name="W8c1">1\t完全不安全</string>
+    <string name="W8c2">2\t有一點安全</string>
+    <string name="W8c3">3\t中等程度安全</string>
+    <string name="W8c4">4\t很安全</string>
+    <string name="W8c5">5\t極安全</string>
+    <string name="W8c6">99\t遺漏值</string>
+
+    <string name="W9">您所處的環境健康嗎? (如污染、噪音、氣候、景觀等)</string>
+    <string name="W9c1">1\t完全不健康</string>
+    <string name="W9c2">2\t有一點健康</string>
+    <string name="W9c3">3\t中等程度健康</string>
+    <string name="W9c4">4\t很健康</string>
+    <string name="W9c5">5\t極健康</string>
+    <string name="W9c6">99\t遺漏值</string>
+
+    <string name="W10">您每天的生活有足夠的精力嗎?</string>
+    <string name="W10c1">1\t完全不足夠</string>
+    <string name="W10c2">2\t少許足夠</string>
+    <string name="W10c3">3\t中等程度足夠</string>
+    <string name="W10c4">4\t很足夠</string>
+    <string name="W10c5">5\t完全足夠</string>
+    <string name="W10c6">99\t遺漏值</string>
+
+    <string name="W11">您能接受自己的外表嗎?</string>
+    <string name="W11c1">1\t完全不能夠</string>
+    <string name="W11c2">2\t少許能夠</string>
+    <string name="W11c3">3\t中等程度能夠</string>
+    <string name="W11c4">4\t很能夠</string>
+    <string name="W11c5">5\t完全能夠</string>
+    <string name="W11c6">99\t遺漏值</string>
+
+    <string name="W12">您有足夠的金錢應付所需嗎?</string>
+    <string name="W12c1">1\t完全不能夠</string>
+    <string name="W12c2">2\t少許能夠</string>
+    <string name="W12c3">3\t中等程度能夠</string>
+    <string name="W12c4">4\t很能夠</string>
+    <string name="W12c5">5\t完全能夠</string>
+    <string name="W12c6">99\t遺漏值</string>
+
+    <string name="W13">您能方便得到每日生活所需的資訊嗎?</string>
+    <string name="W13c1">1\t完全不方便</string>
+    <string name="W13c2">2\t少許方便</string>
+    <string name="W13c3">3\t中等程度方便</string>
+    <string name="W13c4">4\t很方便</string>
+    <string name="W13c5">5\t完全方便</string>
+    <string name="W13c6">99\t遺漏值</string>
+
+    <string name="W14">您有機會從事休閒活動嗎?</string>
+    <string name="W14c1">1\t完全沒有機會</string>
+    <string name="W14c2">2\t少許機會</string>
+    <string name="W14c3">3\t中等程度機會</string>
+    <string name="W14c4">4\t很有機會</string>
+    <string name="W14c5">5\t完全有機會</string>
+    <string name="W14c6">99\t遺漏值</string>
+
+    <string name="W15">您四處行動的能力好嗎?</string>
+    <string name="W15c1">1\t完全不好</string>
+    <string name="W15c2">2\t有一點好</string>
+    <string name="W15c3">3\t中等程度好</string>
+    <string name="W15c4">4\t很好</string>
+    <string name="W15c5">5\t極好</string>
+    <string name="W15c6">99\t遺漏值</string>
+
+    <string name="W16">您滿意自己的睡眠狀況嗎?</string>
+    <string name="W16c1">1\t極不滿意</string>
+    <string name="W16c2">2\t不滿意</string>
+    <string name="W16c3">3\t中等程度滿意</string>
+    <string name="W16c4">4\t滿意</string>
+    <string name="W16c5">5\t極滿意</string>
+    <string name="W16c6">99\t遺漏值</string>
+
+    <string name="W17">您對自己從事日常活動的能力滿意嗎?</string>
+    <string name="W17c1">1\t極不滿意</string>
+    <string name="W17c2">2\t不滿意</string>
+    <string name="W17c3">3\t中等程度滿意</string>
+    <string name="W17c4">4\t滿意</string>
+    <string name="W17c5">5\t極滿意</string>
+    <string name="W17c6">99\t遺漏值</string>
+
+    <string name="W18">您滿意自己的工作能力嗎?</string>
+    <string name="W18c1">1\t極不滿意</string>
+    <string name="W18c2">2\t不滿意</string>
+    <string name="W18c3">3\t中等程度滿意</string>
+    <string name="W18c4">4\t滿意</string>
+    <string name="W18c5">5\t極滿意</string>
+    <string name="W18c6">99\t遺漏值</string>
+
+    <string name="W19">您對自己滿意嗎?</string>
+    <string name="W19c1">1\t極不滿意</string>
+    <string name="W19c2">2\t不滿意</string>
+    <string name="W19c3">3\t中等程度滿意</string>
+    <string name="W19c4">4\t滿意</string>
+    <string name="W19c5">5\t極滿意</string>
+    <string name="W19c6">99\t遺漏值</string>
+
+    <string name="W20">您滿意自己的人際關係嗎?</string>
+    <string name="W20c1">1\t極不滿意</string>
+    <string name="W20c2">2\t不滿意</string>
+    <string name="W20c3">3\t中等程度滿意</string>
+    <string name="W20c4">4\t滿意</string>
+    <string name="W20c5">5\t極滿意</string>
+    <string name="W20c6">99\t遺漏值</string>
+
+    <string name="W21">您滿意自己的性生活嗎?</string>
+    <string name="W21c1">1\t極不滿意</string>
+    <string name="W21c2">2\t不滿意</string>
+    <string name="W21c3">3\t中等程度滿意</string>
+    <string name="W21c4">4\t滿意</string>
+    <string name="W21c5">5\t極滿意</string>
+    <string name="W21c6">99\t遺漏值</string>
+
+    <string name="W22">您滿意朋友給您的支持嗎?</string>
+    <string name="W22c1">1\t極不滿意</string>
+    <string name="W22c2">2\t不滿意</string>
+    <string name="W22c3">3\t中等程度滿意</string>
+    <string name="W22c4">4\t滿意</string>
+    <string name="W22c5">5\t極滿意</string>
+    <string name="W22c6">99\t遺漏值</string>
+
+    <string name="W23">您滿意自己住所的狀況嗎?</string>
+    <string name="W23c1">1\t極不滿意</string>
+    <string name="W23c2">2\t不滿意</string>
+    <string name="W23c3">3\t中等程度滿意</string>
+    <string name="W23c4">4\t滿意</string>
+    <string name="W23c5">5\t極滿意</string>
+    <string name="W23c6">99\t遺漏值</string>
+
+    <string name="W24">您對醫療保健服務的方便程度滿意嗎?</string>
+    <string name="W24c1">1\t極不滿意</string>
+    <string name="W24c2">2\t不滿意</string>
+    <string name="W24c3">3\t中等程度滿意</string>
+    <string name="W24c4">4\t滿意</string>
+    <string name="W24c5">5\t極滿意</string>
+    <string name="W24c6">99\t遺漏值</string>
+
+    <string name="W25">您滿意所使用的交通運輸方式嗎?</string>
+    <string name="W25c1">1\t極不滿意</string>
+    <string name="W25c2">2\t不滿意</string>
+    <string name="W25c3">3\t中等程度滿意</string>
+    <string name="W25c4">4\t滿意</string>
+    <string name="W25c5">5\t極滿意</string>
+    <string name="W25c6">99\t遺漏值</string>
+
+    <string name="W26">您常有負面的感受嗎?（如擔心、傷心、緊張、焦慮、憂鬱等)</string>
+    <string name="W26c1">1\t從來沒有</string>
+    <string name="W26c2">2\t不常有</string>
+    <string name="W26c3">3\t一半有一半沒有</string>
+    <string name="W26c4">4\t很常有</string>
+    <string name="W26c5">5\t一直都有</string>
+    <string name="W26c6">99\t遺漏值</string>
+
+    <string name="W27">您覺得自己有面子或被尊重嗎?</string>
+    <string name="W27c1">1\t完全沒有</string>
+    <string name="W27c2">2\t有一點有</string>
+    <string name="W27c3">3\t中等程度有</string>
+    <string name="W27c4">4\t很有</string>
+    <string name="W27c5">5\t極有</string>
+    <string name="W27c6">99\t遺漏值</string>
+
+    <string name="W28">您想吃的食物通常都能吃到嗎?</string>
+    <string name="W28c1">1\t從來沒</string>
+    <string name="W28c2">2\t不常有</string>
+    <string name="W28c3">3\t一半有一半沒有</string>
+    <string name="W28c4">4\t很常有</string>
+    <string name="W28c5">5\t一直都有</string>
+    <string name="W28c6">99\t遺漏值</string>
 </resources>

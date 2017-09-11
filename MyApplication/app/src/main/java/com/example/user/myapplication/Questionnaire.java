@@ -55,7 +55,22 @@ public class Questionnaire extends AppCompatActivity {
             }
         });
 
-
+        BootstrapButton qq3=(BootstrapButton) findViewById(R.id.q3);
+        qq3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Questionnaire.this, WHOQOL1.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("題號",0);
+                //bundle.putInt("分數",0);
+                bundle.putString("選擇","");
+                bundle.putString("上一題","不需要");//
+                intent.putExtras(bundle);
+                startActivity(intent);
+                Questionnaire.this.finish();
+            }
+        });
 
 
     }

@@ -48,5 +48,16 @@ public class IADLANS extends AppCompatActivity {
             p1.setBootstrapBrand(DefaultBootstrapBrand.INFO);
         }
 
+        /*
+        //寫檔
+        SQLiteDatabase mydatabase = openOrCreateDatabase("data",MODE_PRIVATE,null);
+
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS iadl(id VARCHAR,ans VARCHAR);");
+        mydatabase.execSQL("INSERT INTO iadl VALUES('"+
+                ""+//流水號?
+                "','"+
+                temp+
+                "');");
+                */
     }
 }
