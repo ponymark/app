@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.content.IntentFilter;
@@ -39,7 +40,19 @@ public class MainActivity extends AppCompatActivity {
         //setupCustomStyle(R.id.button2);
         //setupCustomStyle(R.id.button3);
         //setupCustomStyle(R.id.button4);
+        BootstrapButton qq1=(BootstrapButton) findViewById(R.id.button1);
+        qq1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, personaldata.class);
+                startActivity(intent);
+                MainActivity.this.finish();
 
+
+
+            }
+        });
         BootstrapButton qq=(BootstrapButton) findViewById(R.id.button2);
         qq.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +78,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            Intent intent = new Intent();
+            intent.setClass(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+            MainActivity.this.finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     //註冊廣播 監聽網路狀態
     @Override
     protected void onResume() {

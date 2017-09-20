@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
@@ -16,6 +17,9 @@ public class WHOQOL1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.activity_whoqol1);
         for(int i=12 ; i<=13 ; i++)
         {
@@ -96,7 +100,7 @@ public class WHOQOL1 extends AppCompatActivity {
         past=bundle.getString("上一題");//
         init();
 
-
+        setTitle(getResources().getIdentifier("progress"+counter, "string", getPackageName()));
 
         BootstrapButton next=(BootstrapButton) findViewById(R.id.page13);
         next.setOnCheckedChangedListener(new BootstrapButton.OnCheckedChangedListener(){
@@ -174,6 +178,48 @@ public class WHOQOL1 extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            Intent intent = new Intent();
+
+            if(counter!=1) {
+                intent.setClass(WHOQOL1.this, WHOQOL1.class);
+            }
+
+            else  {
+                intent.setClass(WHOQOL1.this, Questionnaire.class);
+            }
+
+
+            Bundle bundle = new Bundle();
+
+            String [] result=record.split(" ");
+
+            String temp="";
+            for(int y=0;y<result.length-1;y++){
+                if(y!=result.length-2)
+                {temp+=result[y]+" ";}
+                else
+                {temp+=result[y];}
+            }
+
+            String last=result.length==0?"99":result[result.length-1];//
+
+
+            //bundle.putInt("分數",counter==1?0:pastchose-Integer.parseInt(result[counter-2]));
+            bundle.putInt("題號",counter==1?0:counter-2);
+            bundle.putString("選擇",temp);
+            bundle.putString("上一題",last);//
+            intent.putExtras(bundle);
+            startActivity(intent);
+            WHOQOL1.this.finish();
+        }
+
+
+        return super.onKeyDown(keyCode, event);
     }
 
     private void setupCustomStyle(int id,float t) {

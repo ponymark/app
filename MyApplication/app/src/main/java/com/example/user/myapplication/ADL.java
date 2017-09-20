@@ -7,6 +7,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
@@ -166,6 +167,57 @@ public class ADL extends AppCompatActivity {
 
 
     }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            Intent intent = new Intent();
+
+            if(counter==4) {
+                intent.setClass(ADL.this, ADL2.class);
+            }
+            else if(counter==7||counter==6||counter==5) {
+                intent.setClass(ADL.this, ADL.class);
+            }
+            else if(counter==1) {
+                intent.setClass(ADL.this, Questionnaire.class);
+            }
+            else if(counter==10)
+            {
+                intent.setClass(ADL.this, ADLANS.class);
+            }
+
+            Bundle bundle = new Bundle();
+
+            String [] result=record.split(" ");
+
+            String temp="";
+            for(int y=0;y<result.length-1;y++){
+                if(y!=result.length-2)
+                {temp+=result[y]+" ";}
+                else
+                {temp+=result[y];}
+            }
+
+            String last=result.length==0?"0":result[result.length-1];//
+
+
+            bundle.putInt("分數",counter==1?0:pastchose-Integer.parseInt(result[counter-2]));
+            bundle.putInt("題號",counter==1?0:counter-2);
+            bundle.putString("選擇",temp);
+            bundle.putString("上一題",last);//
+            intent.putExtras(bundle);
+            startActivity(intent);
+            ADL.this.finish();
+        }
+
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+
     private void setupCustomStyle(int id,float t) {
         BootstrapButton bt1=(BootstrapButton )findViewById(id);
         bt1.setBootstrapSize(t);

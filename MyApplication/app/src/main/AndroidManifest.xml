@@ -29,7 +29,8 @@
         <activity android:name=".IADL3" />
         <activity android:name=".IADLANS" />
         <activity android:name=".WHOQOL1" />
-        <activity android:name=".WHOQOLANS"></activity>
+        <activity android:name=".WHOQOLANS" />
+        <activity android:name=".personaldata"></activity>
     </application>
 
 </manifest>

@@ -21,7 +21,7 @@
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="基本資料"
                 app:bootstrapBrand="primary"
@@ -32,7 +32,7 @@
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="質性研究"
                 app:bootstrapBrand="info"
@@ -50,7 +50,7 @@
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="問卷"
                 app:bootstrapBrand="success"
@@ -62,7 +62,7 @@
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="上傳"
                 app:bootstrapBrand="warning"
