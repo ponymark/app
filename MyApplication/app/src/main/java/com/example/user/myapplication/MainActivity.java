@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.content.IntentFilter;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.example.user.myapplication.NetWorkStateReceiver;
 import com.beardedhen.androidbootstrap.TypefaceProvider;
@@ -29,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
         TypefaceProvider.registerDefaultIconSets();
         setContentView(R.layout.activity_main);
 
+        Bundle bundle = getIntent().getExtras();
+        String t1=bundle.getString("測試者id");
+        String t2=bundle.getString("受訪者id");
+        BootstrapLabel bt1=(BootstrapLabel )findViewById(R.id.self);
+        bt1.setText("測試者:"+t1+"\t\t受訪者:"+t2);
+
+
         for(int i=1 ; i<=4 ; i++)
         {
             String abc = "button"+String.valueOf(i);
@@ -36,10 +44,6 @@ public class MainActivity extends AppCompatActivity {
             setupCustomStyle(resID);
         }
 
-        //setupCustomStyle(R.id.button);
-        //setupCustomStyle(R.id.button2);
-        //setupCustomStyle(R.id.button3);
-        //setupCustomStyle(R.id.button4);
         BootstrapButton qq1=(BootstrapButton) findViewById(R.id.button1);
         qq1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,9 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.setClass(MainActivity.this, personaldata.class);
                 startActivity(intent);
                 MainActivity.this.finish();
-
-
-
             }
         });
         BootstrapButton qq=(BootstrapButton) findViewById(R.id.button2);
@@ -68,13 +69,10 @@ public class MainActivity extends AppCompatActivity {
         qq4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 BootstrapButton qq44=(BootstrapButton) v;
                 if(qq44.getText().equals("可以上傳")){
                     qq44.setBootstrapBrand(DefaultBootstrapBrand.DANGER);//到時候改成跳出上傳進度視窗
                 }
-
-
             }
         });
     }

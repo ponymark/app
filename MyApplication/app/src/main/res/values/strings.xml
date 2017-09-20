@@ -414,4 +414,7 @@
         <item name="D217">Q.卡那卡那富族</item>
         <item name="D218">99.遺漏值</item>
     </array>
+
+    <string name="input1">請輸入測試人員id:</string>
+    <string name="input2">請輸入受測者id:</string>
 </resources>

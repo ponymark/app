@@ -5,72 +5,103 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.user.myapplication.MainActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical">
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/button1"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/self"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="基本資料"
-                app:bootstrapBrand="primary"
-                app:bootstrapSize="lg"
-                app:buttonMode="regular"
-                app:roundedCorners="false"
-                app:showOutline="false" />
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="質性研究"
+                android:layout_height="match_parent"
                 app:bootstrapBrand="info"
-                app:bootstrapSize="lg"
-                app:buttonMode="regular"
-                app:showOutline="false"
-                app:roundedCorners="false"
-                />
+                app:bootstrapHeading="h1"
+                app:bootstrapText="test" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="基本資料"
+                    app:bootstrapBrand="primary"
+                    app:bootstrapSize="lg"
+                    app:buttonMode="regular"
+                    app:roundedCorners="false"
+                    app:showOutline="false" />
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="質性研究"
+                    app:bootstrapBrand="info"
+                    app:bootstrapSize="lg"
+                    app:buttonMode="regular"
+                    app:showOutline="false"
+                    app:roundedCorners="false"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="問卷"
+                    app:bootstrapBrand="success"
+                    app:bootstrapSize="lg"
+                    app:buttonMode="regular"
+                    app:showOutline="false"
+                    app:roundedCorners="false"
+                    />
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="上傳"
+                    app:bootstrapBrand="warning"
+                    app:bootstrapSize="lg"
+                    app:buttonMode="regular"
+                    app:showOutline="false"
+                    app:roundedCorners="false"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical">
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/button2"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/copyright"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="問卷"
-                app:bootstrapBrand="success"
-                app:bootstrapSize="lg"
-                app:buttonMode="regular"
-                app:showOutline="false"
-                app:roundedCorners="false"
-                />
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="上傳"
-                app:bootstrapBrand="warning"
-                app:bootstrapSize="lg"
-                app:buttonMode="regular"
-                app:showOutline="false"
-                app:roundedCorners="false"
-                />
+                android:layout_height="match_parent"
+                app:bootstrapBrand="danger"
+                app:bootstrapHeading="h4"
+                app:bootstrapText="©\t2017\t洪佳揚, 潘健一\t All right reserved" />
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
