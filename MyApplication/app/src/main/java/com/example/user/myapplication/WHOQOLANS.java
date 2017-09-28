@@ -9,7 +9,8 @@ import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 
 public class WHOQOLANS extends AppCompatActivity {
-
+    String t1;
+    String t2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +19,8 @@ public class WHOQOLANS extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 
         BootstrapLabel p1= (BootstrapLabel) findViewById(R.id.whoqolanswer);
-
+        t1=bundle.getString("測試者id");
+        t2=bundle.getString("受訪者id");
 
         int cou=0;
         String temp="";
@@ -47,6 +49,10 @@ public class WHOQOLANS extends AppCompatActivity {
         if(keyCode == KeyEvent.KEYCODE_BACK){
             Intent intent = new Intent();
             intent.setClass(WHOQOLANS.this, MainActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("測試者id",t1);
+            bundle.putString("受訪者id",t2);
+            intent.putExtras(bundle);
             startActivity(intent);
             WHOQOLANS.this.finish();
         }

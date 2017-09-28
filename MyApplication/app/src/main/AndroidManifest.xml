@@ -31,7 +31,11 @@
         <activity android:name=".WHOQOL1" />
         <activity android:name=".WHOQOLANS" />
         <activity android:name=".personaldata" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".list" android:windowSoftInputMode="stateHidden" />
     </application>
+
+
+
 
 </manifest>

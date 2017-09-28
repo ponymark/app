@@ -24,6 +24,9 @@ import static android.database.sqlite.SQLiteDatabase.openDatabase;
 
 public class MainActivity extends AppCompatActivity {
     NetWorkStateReceiver netWorkStateReceiver;//網路狀態
+
+    String t1;
+    String t2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Bundle bundle = getIntent().getExtras();
-        String t1=bundle.getString("測試者id");
-        String t2=bundle.getString("受訪者id");
+        t1=bundle.getString("測試者id");
+        t2=bundle.getString("受訪者id");
         BootstrapLabel bt1=(BootstrapLabel )findViewById(R.id.self);
         bt1.setText("測試者:"+t1+"\t\t受訪者:"+t2);
 
@@ -50,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, personaldata.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("測試者id",t1);
+                bundle.putString("受訪者id",t2);
+                intent.putExtras(bundle);
                 startActivity(intent);
                 MainActivity.this.finish();
             }
@@ -60,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, Questionnaire.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("測試者id",t1);
+                bundle.putString("受訪者id",t2);
+                intent.putExtras(bundle);
                 startActivity(intent);
                 MainActivity.this.finish();
             }
@@ -82,6 +93,12 @@ public class MainActivity extends AppCompatActivity {
         if(keyCode == KeyEvent.KEYCODE_BACK){
             Intent intent = new Intent();
             intent.setClass(MainActivity.this, MainActivity.class);
+
+            Bundle bundle = new Bundle();
+
+            bundle.putString("測試者id",t1 );//
+            bundle.putString("受訪者id",t2);//
+            intent.putExtras(bundle);
             startActivity(intent);
             MainActivity.this.finish();
         }
