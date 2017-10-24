@@ -32,10 +32,10 @@
         <activity android:name=".WHOQOLANS" />
         <activity android:name=".personaldata" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".list" android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".list"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".upload"></activity>
     </application>
-
-
-
 
 </manifest>

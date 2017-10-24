@@ -15,6 +15,8 @@ public class ADL3 extends AppCompatActivity {
     int chose=-1;
     int counter=0;
     String record="",past="";
+    String t1;
+    String t2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +79,8 @@ public class ADL3 extends AppCompatActivity {
         pastchose=bundle.getInt("分數");
         record=bundle.getString("選擇");
         past=bundle.getString("上一題");//
+        t1=bundle.getString("測試者id");
+        t2=bundle.getString("受訪者id");
         init();
 
         BootstrapButton next=(BootstrapButton) findViewById(R.id.page5);
@@ -102,6 +106,8 @@ public class ADL3 extends AppCompatActivity {
                         bundle.putInt("題號",counter);
                         bundle.putString("選擇",record+" "+Integer.toString(chose));
                         bundle.putString("上一題","不需要");//
+                        bundle.putString("測試者id",t1);
+                        bundle.putString("受訪者id",t2);
                         intent.putExtras(bundle);
                         startActivity(intent);
                         ADL3.this.finish();
@@ -144,6 +150,8 @@ public class ADL3 extends AppCompatActivity {
                     bundle.putInt("題號",counter==1?0:counter-2);
                     bundle.putString("選擇",temp);
                     bundle.putString("上一題",last);//
+                    bundle.putString("測試者id",t1);
+                    bundle.putString("受訪者id",t2);
                     intent.putExtras(bundle);
                     startActivity(intent);
                     ADL3.this.finish();
@@ -182,6 +190,8 @@ public class ADL3 extends AppCompatActivity {
             bundle.putInt("題號",counter==1?0:counter-2);
             bundle.putString("選擇",temp);
             bundle.putString("上一題",last);//
+            bundle.putString("測試者id",t1);
+            bundle.putString("受訪者id",t2);
             intent.putExtras(bundle);
             startActivity(intent);
             ADL3.this.finish();

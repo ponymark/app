@@ -1,15 +1,21 @@
 package com.example.user.myapplication;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 
 public class ADLANS extends AppCompatActivity {
-
+    String t1;
+    String t2;
+    String [] result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,11 +24,14 @@ public class ADLANS extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 
         BootstrapLabel p1= (BootstrapLabel) findViewById(R.id.adlanswer);
+        t1=bundle.getString("測試者id");
+        t2=bundle.getString("受訪者id");
+
 
         int cou=0;
         String temp="";
         temp=bundle.getString("選擇");
-        String [] result=temp.split(" ");
+        result=temp.split(" ");
         for(int y=0;y<result.length;y++){
             if((y==0||y==3||y==6)&&(result[y].equals("5")||result[y].equals("0")))
             {
@@ -58,35 +67,55 @@ public class ADLANS extends AppCompatActivity {
             p1.setBootstrapBrand(DefaultBootstrapBrand.INFO);
         }
 
+        BootstrapButton adlsave = (BootstrapButton)findViewById(R.id.adlsave);
+        adlsave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
 
 
 
+                SQLiteDatabase mydatabase = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+                mydatabase.execSQL("CREATE TABLE IF NOT EXISTS adl(interviewerid VARCHAR,testerid VARCHAR,progress VARCHAR,A1 VARCHAR,A2 VARCHAR,A3 VARCHAR,A4 VARCHAR, A5 VARCHAR,A6 VARCHAR,A7 VARCHAR,A8 VARCHAR,A9 VARCHAR,A10 VARCHAR);");
 
-        /*
-        //寫檔
-        SQLiteDatabase mydatabase = openOrCreateDatabase("data",MODE_PRIVATE,null);
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("interviewerid", t1);
+                contentValues.put("testerid", t2);
+                contentValues.put("progress", "已完成");
 
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS adl(id VARCHAR,ans VARCHAR);");
-        mydatabase.execSQL("INSERT INTO adl VALUES('"+
-                ""+//流水號?
-                "','"+
-                temp+
-                "');");
-                */
+                for(int i=0;i<result.length;i++){
+                    contentValues.put("A"+(i+1), result[i]);
+                }
 
+                mydatabase.insert("adl", null, contentValues);
 
-
-
-
-
-
+                mydatabase.close();
+                //寫檔
+                //寫入另一個資料表adl 和一開始main活動資料有主建上的外鍵關係
 
 
+                SQLiteDatabase db = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+                db.execSQL("CREATE TABLE IF NOT EXISTS main(interviewerid VARCHAR,testerid VARCHAR,testname VARCHAR,adlprogress VARCHAR,iadlprogress VARCHAR,whoqolprogress VARCHAR,personaldataprogress VARCHAR,recordprogress VARCHAR);");
+                db.execSQL("Update  main set adlprogress = '"+"adl完成"+"' where interviewerid = '"+t1+"' and testerid = '"+t2+"'");
+                db.close();
+                //並更新資料表main裡的adl進度為已完成
 
 
 
+                Intent intent = new Intent();
+                intent.setClass(ADLANS.this, list.class);
 
+                Bundle bundle = new Bundle();
 
+                bundle.putString("測試者id", t1);//
+
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+                ADLANS.this.finish();
+                //回到list 並攜帶測試者id
+
+            }
+        });
 
 
         /*
@@ -113,7 +142,14 @@ public class ADLANS extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK){
             Intent intent = new Intent();
-            intent.setClass(ADLANS.this, MainActivity.class);
+            intent.setClass(ADLANS.this, list.class);
+
+            Bundle bundle = new Bundle();
+
+            bundle.putString("測試者id", t1);//
+
+            intent.putExtras(bundle);
+
             startActivity(intent);
             ADLANS.this.finish();
         }

@@ -221,6 +221,8 @@ public class WHOQOL1 extends AppCompatActivity {
             bundle.putInt("題號",counter==1?0:counter-2);
             bundle.putString("選擇",temp);
             bundle.putString("上一題",last);//
+            bundle.putString("測試者id",t1);
+            bundle.putString("受訪者id",t2);
             intent.putExtras(bundle);
             startActivity(intent);
             WHOQOL1.this.finish();

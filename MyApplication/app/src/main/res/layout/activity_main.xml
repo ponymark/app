@@ -14,22 +14,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="horizontal">
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 android:id="@+id/self"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:bootstrapBrand="info"
-                app:bootstrapHeading="h1"
+                app:bootstrapHeading="h4"
                 app:bootstrapText="test" />
         </LinearLayout>
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="8"
             android:orientation="horizontal">
             <LinearLayout
+                android:id="@+id/lo1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -60,6 +62,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/lo2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -89,19 +92,6 @@
                     app:roundedCorners="false"
                     />
             </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <com.beardedhen.androidbootstrap.BootstrapLabel
-                android:id="@+id/copyright"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:bootstrapBrand="danger"
-                app:bootstrapHeading="h4"
-                app:bootstrapText="©\t2017\t洪佳揚, 潘健一\t All right reserved" />
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

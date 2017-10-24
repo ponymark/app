@@ -1,9 +1,12 @@
 package com.example.user.myapplication;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
@@ -20,6 +23,11 @@ public class input extends AppCompatActivity {
         String abc = "input"+String.valueOf(3);
         int resID = getResources().getIdentifier(abc, "id", getPackageName());
         setupCustomStyle(resID,2.0f);
+
+        String abc2 = "clearalldata";
+        int resID2 = getResources().getIdentifier(abc2, "id", getPackageName());
+        setupCustomStyle(resID2,2.0f);
+
         init();
 
         BootstrapButton bb=(BootstrapButton) findViewById(R.id.input3);
@@ -27,21 +35,42 @@ public class input extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent();
-                intent.setClass(input.this, list.class);
-                Bundle bundle = new Bundle();
+                BootstrapEditText trueinput = (BootstrapEditText) findViewById(R.id.input2);
+                if(trueinput.getText().toString().equals("")==false) {
 
-                BootstrapEditText trueinput=(BootstrapEditText) findViewById(R.id.input2);
+                    Intent intent = new Intent();
+                    intent.setClass(input.this, list.class);
+                    Bundle bundle = new Bundle();
 
-                bundle.putString("測試者id",trueinput.getText().toString() );//
 
-                intent.putExtras(bundle);
-                startActivity(intent);
-                input.this.finish();
 
+                    bundle.putString("測試者id", trueinput.getText().toString());//
+
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    input.this.finish();
+                }
+                else{
+                    DialogFragment newFragment = new FireMissilesDialogFragment2();
+                    newFragment.show(getSupportFragmentManager(), "missiles");
+                }
             }
         });
-
+        BootstrapButton bb2=(BootstrapButton) findViewById(R.id.clearalldata);
+        bb2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase mydatabase = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+                mydatabase.execSQL("DROP TABLE IF EXISTS main");
+                mydatabase.execSQL("DROP TABLE IF EXISTS adl");
+                mydatabase.execSQL("DROP TABLE IF EXISTS iadl");
+                mydatabase.execSQL("DROP TABLE IF EXISTS whoqol");
+                mydatabase.execSQL("DROP TABLE IF EXISTS personaldata");
+                mydatabase.execSQL("DROP TABLE IF EXISTS recorddata");
+                mydatabase.close();
+                Toast.makeText(input.this, "所有資料都刪除!!!", Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
     private void setupCustomStyle(int id,float t) {

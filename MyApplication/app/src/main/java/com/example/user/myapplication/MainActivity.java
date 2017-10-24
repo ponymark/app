@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.content.IntentFilter;
+import android.widget.LinearLayout;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
@@ -23,7 +24,7 @@ import static android.database.sqlite.SQLiteDatabase.openDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
-    NetWorkStateReceiver netWorkStateReceiver;//網路狀態
+    //NetWorkStateReceiver netWorkStateReceiver;//網路狀態
 
     String t1;
     String t2;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         BootstrapButton qq4=(BootstrapButton) findViewById(R.id.button4);
         qq4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +88,37 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        if(t1.equals("12345")) {
+            qq.setVisibility(View.GONE);
+            qq4.setVisibility(View.GONE);
+            BootstrapButton qq3 = (BootstrapButton) findViewById(R.id.button3);
+            qq3.setVisibility(View.GONE);
+            LinearLayout lo1 = (LinearLayout) findViewById(R.id.lo1);
+            LinearLayout lo2 = (LinearLayout) findViewById(R.id.lo2);
+            lo2.setVisibility(View.GONE);
+        }
+        else if(t1.equals("22333")) {
+            qq1.setVisibility(View.GONE);
+            qq4.setVisibility(View.GONE);
+            BootstrapButton qq3 = (BootstrapButton) findViewById(R.id.button3);
+            qq3.setVisibility(View.GONE);
+            LinearLayout lo1 = (LinearLayout) findViewById(R.id.lo1);
+            LinearLayout lo2 = (LinearLayout) findViewById(R.id.lo2);
+            lo1.setVisibility(View.GONE);
+        }
+        else if(t1.equals("44556")) {
+            qq.setVisibility(View.GONE);
+            qq1.setVisibility(View.GONE);
+            qq4.setVisibility(View.GONE);
+            BootstrapButton qq3 = (BootstrapButton) findViewById(R.id.button3);
+            //qq3.setVisibility(View.GONE);
+            LinearLayout lo1 = (LinearLayout) findViewById(R.id.lo1);
+            LinearLayout lo2 = (LinearLayout) findViewById(R.id.lo2);
+            lo2.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -105,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+
+    /*
     //註冊廣播 監聽網路狀態
     @Override
     protected void onResume() {
@@ -122,6 +157,10 @@ public class MainActivity extends AppCompatActivity {
         unregisterReceiver(netWorkStateReceiver);
         super.onPause();
     }
+
+    */
+
+
     private void setupCustomStyle(int id) {
         BootstrapButton bt1=(BootstrapButton )findViewById(id);
         bt1.setBootstrapSize(3.0f);

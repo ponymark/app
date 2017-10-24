@@ -14,6 +14,10 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
  */
 
 public class NetWorkStateReceiver extends BroadcastReceiver {
+
+
+    static int vv;
+
     public Activity activity;
 
     public NetWorkStateReceiver(Activity _activity){
@@ -24,14 +28,28 @@ public class NetWorkStateReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        BootstrapButton bt1=(BootstrapButton )this.activity.findViewById(R.id.button4);
+
+
+
+
+
+        //BootstrapButton bt1=(BootstrapButton )this.activity.findViewById(R.id.button4);
         if(connMgr.getActiveNetworkInfo()==null){//沒有連線 null
-            bt1.setText("不行上傳");
-            bt1.setBootstrapBrand(DefaultBootstrapBrand.DANGER);
+            //bt1.setText("不行上傳");
+            //bt1.setBootstrapBrand(DefaultBootstrapBrand.DANGER);
+
+            vv=0;
+
+
         }
         else{
-            bt1.setText(connMgr.getActiveNetworkInfo().isAvailable()?"可以上傳":"不行上傳");//true 有且允許可用連線 false 有但是不允許不可用連線
-            bt1.setBootstrapBrand(connMgr.getActiveNetworkInfo().isAvailable()?DefaultBootstrapBrand.WARNING:DefaultBootstrapBrand.DANGER);
+
+
+            vv=1;
+
+
+            //bt1.setText(connMgr.getActiveNetworkInfo().isAvailable()?"可以上傳":"不行上傳");//true 有且允許可用連線 false 有但是不允許不可用連線
+            //bt1.setBootstrapBrand(connMgr.getActiveNetworkInfo().isAvailable()?DefaultBootstrapBrand.WARNING:DefaultBootstrapBrand.DANGER);
         }
     }
 }

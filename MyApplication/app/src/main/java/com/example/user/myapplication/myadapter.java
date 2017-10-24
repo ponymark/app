@@ -6,12 +6,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapLabel;
+
+import java.util.ArrayList;
+
 /**
  * Created by user on 2017/9/24.
  */
 
 public class myadapter extends BaseAdapter {
-
+    private ArrayList<Integer> mList;
     private String[] mWords;
     private String[] mSubWords;
     private int[] mIcons;
@@ -20,12 +24,32 @@ public class myadapter extends BaseAdapter {
     public myadapter(String[] words,String[] subwords,int[] icons,String interviewer) {
         mWords = words;
         mSubWords = subwords;
-        //這裡要改成根據interviewerid找到相關sqldata 然後把sqldata中的進度與受訪者id丟給兩個陣列mWords與mSubWords
-        //現在只是外面丟字串資料進來這裡做測試
         mIcons = icons;
         minterviewer=interviewer;
+        mList = new ArrayList<>();
     }
+    public void addItem(String title,String subtitle,Integer i){
 
+        String rmwords[]= new String[mWords.length+1];
+        for(int ii=0;ii<mWords.length;ii++){
+            rmwords[ii]=new String(mWords[ii]);
+        }
+        rmwords[rmwords.length-1]=new String(title);
+        mWords=rmwords;
+
+        String rmsubwords[]= new String[mSubWords.length+1];
+        for(int ii=0;ii<mSubWords.length;ii++){
+            rmsubwords[ii]=new String(mSubWords[ii]);
+        }
+        rmsubwords[rmsubwords.length-1]=new String(subtitle);
+        mSubWords=rmsubwords;
+
+
+
+    }
+    public void removeItem(int index){
+        mList.remove(index);
+    }
     @Override
     public int getCount() {
         return mSubWords.length;
@@ -43,34 +67,30 @@ public class myadapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, null);
         }
+            BootstrapLabel title = (BootstrapLabel) convertView.findViewById(R.id.titleb);
+            BootstrapLabel subTitle = (BootstrapLabel) convertView.findViewById(R.id.sub_titleb);
+
+            String text = (String) getItem(position);
+            String subText = mSubWords[position];
+            title.setText(text);
+            subTitle.setText(subText);
 
 
-        TextView title = (TextView) convertView.findViewById(R.id.title);
-        TextView subTitle = (TextView) convertView.findViewById(R.id.sub_title);
-        String text = (String) getItem(position);
-        String subText = mSubWords[position];
-        title.setText(text);
-        subTitle.setText(subText);
+            BootstrapLabel icon = (BootstrapLabel) convertView.findViewById(R.id.imgb);
 
-
-        ImageView icon = (ImageView) convertView.findViewById(R.id.img);
-
-        int resId;
-        if(text.equals("t1")||text.equals("t6")){
-            resId=mIcons[0];//基本
-            icon.setImageResource(resId);
-        }
-        else if(text.equals("t2")||text.equals("t5")){
-            resId=mIcons[1];//問卷
-            icon.setImageResource(resId);
-        }
-        else if(text.equals("t3")||text.equals("t4")||text.equals("t7")){
-            resId=mIcons[2];//錄音
-            icon.setImageResource(resId);
-        }
-
-//這裡要改成依照text決定icon 也就是ifelse 若資料是問卷 則給予問卷資料的圖片resid
-
+            //由interviewer決定資料類型
+            if(minterviewer.equals("12345")){
+                //基本
+                icon.setText("基本");
+            }
+            else if(minterviewer.equals("22333")){
+                //問卷
+                icon.setText("問卷");
+            }
+            else if(minterviewer.equals("44556")){
+                //錄音
+                icon.setText("錄音");
+            }
         return convertView;
     }
 
