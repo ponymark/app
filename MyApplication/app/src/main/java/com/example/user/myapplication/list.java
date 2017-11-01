@@ -34,7 +34,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
     NetWorkStateReceiver netWorkStateReceiver;//網路狀態
 
 
-    private  String interviewerid="";
+    private  String interviewerid="",taskname="";
 
     private static final int ICONS[] = {
         R.drawable.q111,
@@ -58,22 +58,51 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
 
         interviewerid=getbundle.getString("測試者id");
 
+
+
+
+
+
+        SQLiteDatabase mydatabase2 = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+        mydatabase2.execSQL("CREATE TABLE IF NOT EXISTS task(interviewerid VARCHAR,taskname VARCHAR);");
+        Cursor resultSet2 = mydatabase2.rawQuery("Select * from task where interviewerid = '"+interviewerid+"'",null);
+
+        if(resultSet2.getCount()!=0){
+            resultSet2.moveToFirst();
+            do {
+                taskname=resultSet2.getString(1);
+            } while (resultSet2.moveToNext());
+        }
+
+        resultSet2.close();
+        mydatabase2.close();
+
+
+
+
+
+
+
+
+
+
+
         SQLiteDatabase mydatabase = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS main(interviewerid VARCHAR,testerid VARCHAR,testname VARCHAR,adlprogress VARCHAR,iadlprogress VARCHAR,whoqolprogress VARCHAR,personaldataprogress VARCHAR,recordprogress VARCHAR);");
-        Cursor resultSet = mydatabase.rawQuery("Select * from main where interviewerid = "+interviewerid,null);
+        Cursor resultSet = mydatabase.rawQuery("Select * from main where interviewerid = '"+interviewerid+"'",null);
 
         if(resultSet.getCount()!=0){
             resultSet.moveToFirst();
             do {
                 String dc1 = resultSet.getString(1)+" "+resultSet.getString(2);//這裡要改成名字
                 String dc2 ;
-                if(interviewerid.equals("12345")) {
+                if(taskname.equals("基本資料")) {
                     dc2 = resultSet.getString(6);//和進度
                 }
-                else if(interviewerid.equals("22333")) {
+                else if(taskname.equals("問卷")) {
                     dc2 = resultSet.getString(3)+" "+resultSet.getString(4)+" "+resultSet.getString(5)+" ";//和進度
                 }
-                else if(interviewerid.equals("44556")) {
+                else if(taskname.equals("錄音")) {
                     dc2 = resultSet.getString(7);//和進度
                 }
                 else{
@@ -94,7 +123,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
         String[] simpleArray2 = new String[ SUB_TITLES.size() ];
         SUB_TITLES.toArray(simpleArray2);
 
-        final myadapter adapter = new myadapter(simpleArray1,simpleArray2,ICONS,getbundle.getString("測試者id"));
+        final myadapter adapter = new myadapter(simpleArray1,simpleArray2,ICONS,getbundle.getString("測試者id"),taskname);
         list.setAdapter(adapter);
 
 
@@ -135,7 +164,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
     }
 
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog,String name,String testid,String testname) {
+    public void onDialogPositiveClick(DialogFragment dialog,String name,String testid,String testname,String testsex,String testyear) {
 
         if(name.equals("insert")) {
 
@@ -145,15 +174,36 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
     }
 
     @Override
-    public void onDialogNegativeClick(DialogFragment dialog,String name ,String testid,String testname) {
+    public void onDialogNegativeClick(DialogFragment dialog,String name ,String testid,String testname,String testsex,String testyear) {
 
         if(name.equals("insert")) {
+            SQLiteDatabase mydatabase2 = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+            mydatabase2.execSQL("CREATE TABLE IF NOT EXISTS main(interviewerid VARCHAR,testerid VARCHAR,testname VARCHAR,adlprogress VARCHAR,iadlprogress VARCHAR,whoqolprogress VARCHAR,personaldataprogress VARCHAR,recordprogress VARCHAR);");
+            Cursor resultSet = mydatabase2.rawQuery("Select * from main where interviewerid = '"+interviewerid+"'",null);
+            int te = resultSet.getCount()+1;
+            resultSet.close();
+            mydatabase2.close();
+
+
+            SQLiteDatabase mydatabase3 = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+            mydatabase3.execSQL("CREATE TABLE IF NOT EXISTS relation(interviewerid VARCHAR,testerid VARCHAR,testergroup VARCHAR, testername VARCHAR,testersex VARCHAR,testeryear VARCHAR);");
+
+            ContentValues contentValues2 = new ContentValues();
+            contentValues2.put("interviewerid", interviewerid);
+            contentValues2.put("testerid",  String.format("%03d", te));
+            contentValues2.put("testergroup", testid);
+            contentValues2.put("testername",testname );
+            contentValues2.put("testersex", testsex);
+            contentValues2.put("testeryear", testyear);
+            mydatabase3.insert("relation", null, contentValues2);
+            mydatabase3.close();
+
             SQLiteDatabase mydatabase = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
             mydatabase.execSQL("CREATE TABLE IF NOT EXISTS main(interviewerid VARCHAR,testerid VARCHAR,testname VARCHAR,adlprogress VARCHAR,iadlprogress VARCHAR,whoqolprogress VARCHAR,personaldataprogress VARCHAR,recordprogress VARCHAR);");
 
             ContentValues contentValues = new ContentValues();
             contentValues.put("interviewerid", interviewerid);
-            contentValues.put("testerid", testid);
+            contentValues.put("testerid",  testid+String.format("%03d", te));
             contentValues.put("testname", testname);
             contentValues.put("adlprogress", "未開始");
             contentValues.put("iadlprogress", "未開始");
@@ -162,7 +212,6 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
             contentValues.put("recordprogress", "未開始");
             mydatabase.insert("main", null, contentValues);
             //新增什麼資料? 可能是寫死在手機裡? 還是透過網路下載? 總之現在先隨機試試
-
             mydatabase.close();
 
             Intent intent = new Intent();
@@ -310,20 +359,20 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
             do {
                 String dc1 = resultSet.getString(1)+" "+resultSet.getString(2);//這裡要改成名字
 
-                if(interviewerid.equals("12345")) {
+                if(taskname.equals("基本資料")) {
                     dc2 = resultSet.getString(6);//和進度
                 }
-                else if(interviewerid.equals("22333")) {
+                else if(taskname.equals("問卷")) {
                     dc2 = resultSet.getString(3)+" "+resultSet.getString(4)+" "+resultSet.getString(5)+" ";//和進度
                 }
-                else if(interviewerid.equals("44556")) {
+                else if(taskname.equals("錄音")) {
                     dc2 = resultSet.getString(7);//和進度
                 }
                 else{
                     dc2 = "";//和進度
                 }
 
-                if(dc2.equals("未開始")||dc2.equals("未開始 未開始 未開始")) {//未開始 未完成 之類
+                if(dc2.equals("未開始")||dc2.equals("未開始 未開始 未開始 ")) {//未開始 未完成 之類
                     cc++;
                 }
 
@@ -349,10 +398,10 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
             //....
             String dc3="";
             ArrayList<String> dc4=new ArrayList<String>();
-            if(interviewerid.equals("12345")) {
+            if(taskname.equals("基本資料")) {
 
             }
-            else if(interviewerid.equals("22333")) {
+            else if(taskname.equals("問卷")) {
                 if(dc2.split(" ")[0].equals("adl完成")){
                     SQLiteDatabase mydatabase2 = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
                     Cursor resultSet2 = mydatabase2.rawQuery("Select * from adl where interviewerid = '"+interviewerid+"' and testerid='"+item.split(" ")[0]+"'",null);
@@ -373,15 +422,15 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
                     String [] hh=new String[ dc4.size() ];
                     dc4.toArray(hh);
 
-                    String temp="("+item.split(" ")[0].substring(1)
-                            +","+"'"+item.split(" ")[0].substring(0,1)+"'";
+                    String temp="("+item.split(" ")[0].substring(1)//有bug如果是遺漏值99004就會只抓到9004
+                            +","+"'"+item.split(" ")[0].substring(0,1)+"'";//有bug 如果是遺漏值99004就會只抓到9
 
                             for(int gh=3;gh<=12;gh++)
                             {
                                 temp+=","+hh[gh];
                             }
 
-                            temp+=","+interviewerid+")";
+                            temp+=",'"+interviewerid+"')";
 
                     p1("app","203.64.84.32","w2017_a","(id,groupid,A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,interviewerid)",temp);
                     //p1(String databasename, String servername,String tablename,String insertcols,String insertvals)
@@ -396,21 +445,68 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
 
                 }
             }
-            else if(interviewerid.equals("44556")) {
+            else if(taskname.equals("錄音")) {
 
             }
 
 
 
+            ArrayList<String> dc5=new ArrayList<String>();
+            SQLiteDatabase mydatabase3 = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+            Cursor resultSet3 = mydatabase3.rawQuery("Select * from relation where interviewerid = '"+interviewerid+"' and testerid='"+item.split(" ")[0].substring(1)+"' and testergroup='"+item.split(" ")[0].substring(0,1)+"'",null);
+            //有bug如果是遺漏值99004就會只抓到9004//有bug 如果是遺漏值99004就會只抓到9
+            if(resultSet3.getCount()!=0){
+                resultSet3.moveToFirst();
+                do {
+                    int cou=0;
+                    while(cou<6) {
+                        dc5.add(resultSet3.getString(cou));
+                        cou++;
+                    }
+                } while (resultSet3.moveToNext());
+            }
+            resultSet3.close();
+            mydatabase3.close();
 
+            String [] hh2=new String[ dc5.size() ];
+            dc5.toArray(hh2);
 
+            String temp2="(";
 
+            for(int gh=0;gh<6;gh++)
+            {
+                if(gh!=5) {
+                    if(gh==1){
 
+                        temp2 += hh2[gh] + ",";
+                    }
+                    else{
+                        temp2 += "'"+hh2[gh]+"'" + ",";
+                    }
+                }
+                else{
+                    temp2 += "'"+hh2[gh]+"'";
+                }
+            }
 
+            temp2+=")";
+
+            p1("app","203.64.84.32","relation","(interviewerid,testerid,testergroup,testername,testersex,testeryear)",temp2);
+
+            /*
+            Intent intent = new Intent();
+            intent.setClass(list.this, list.class);
+
+            Bundle bundle = new Bundle();
+
+            bundle.putString("測試者id",interviewerid);//
+
+            intent.putExtras(bundle);
+            startActivity(intent);
+            list.this.finish();
+*/
 
         }
-
-
     }
     @Override
     public void nothingClick(DialogFragment dialog){
@@ -439,6 +535,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
 
 public void p1(String databasename, String servername,String tablename,String insertcols,String insertvals){
     new upload(this).execute(databasename,servername,tablename,insertcols,insertvals);
+    //Toast.makeText(list.this, result, Toast.LENGTH_LONG).show();
 }
 
 

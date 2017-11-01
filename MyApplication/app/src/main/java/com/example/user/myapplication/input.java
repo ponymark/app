@@ -1,6 +1,7 @@
 package com.example.user.myapplication;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -38,17 +39,44 @@ public class input extends AppCompatActivity {
                 BootstrapEditText trueinput = (BootstrapEditText) findViewById(R.id.input2);
                 if(trueinput.getText().toString().equals("")==false) {
 
-                    Intent intent = new Intent();
-                    intent.setClass(input.this, list.class);
-                    Bundle bundle = new Bundle();
 
 
+                    int flag=0;
 
-                    bundle.putString("測試者id", trueinput.getText().toString());//
+                    SQLiteDatabase mydatabase = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+                    mydatabase.execSQL("CREATE TABLE IF NOT EXISTS task(interviewerid VARCHAR,taskname VARCHAR);");
+                    Cursor resultSet = mydatabase.rawQuery("Select * from task where interviewerid = '"+trueinput.getText().toString()+"'",null);
 
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                    input.this.finish();
+                    if(resultSet.getCount()!=0){
+                       flag=1;
+                    }
+
+                    resultSet.close();
+                    mydatabase.close();
+
+                    if(flag==1){
+                        Intent intent = new Intent();
+                        intent.setClass(input.this, list.class);
+                        Bundle bundle = new Bundle();
+
+                        bundle.putString("測試者id", trueinput.getText().toString());//
+
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        input.this.finish();
+                    }
+                    else{
+                        Toast.makeText(input.this, "裝置資料庫無相關資料 判定為新使用者 請選擇工作!", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent();
+                        intent.setClass(input.this, task.class);
+                        Bundle bundle = new Bundle();
+
+                        bundle.putString("測試者id", trueinput.getText().toString());//
+
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        input.this.finish();
+                    }
                 }
                 else{
                     DialogFragment newFragment = new FireMissilesDialogFragment2();
@@ -67,6 +95,8 @@ public class input extends AppCompatActivity {
                 mydatabase.execSQL("DROP TABLE IF EXISTS whoqol");
                 mydatabase.execSQL("DROP TABLE IF EXISTS personaldata");
                 mydatabase.execSQL("DROP TABLE IF EXISTS recorddata");
+                mydatabase.execSQL("DROP TABLE IF EXISTS relation");
+                mydatabase.execSQL("DROP TABLE IF EXISTS task");
                 mydatabase.close();
                 Toast.makeText(input.this, "所有資料都刪除!!!", Toast.LENGTH_LONG).show();
             }

@@ -1,3 +1,4 @@
+com.beardedhen.androidbootstrap
 int attr animated 0x7f040001
 int attr badgeText 0x7f040002
 int attr bootstrapBrand 0x7f040003

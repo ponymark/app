@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     String t1;
     String t2;
+    String taskname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +91,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        if(t1.equals("12345")) {
+        SQLiteDatabase mydatabase2 = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+        mydatabase2.execSQL("CREATE TABLE IF NOT EXISTS task(interviewerid VARCHAR,taskname VARCHAR);");
+        Cursor resultSet2 = mydatabase2.rawQuery("Select * from task where interviewerid = '"+t1+"'",null);
+
+        if(resultSet2.getCount()!=0){
+            resultSet2.moveToFirst();
+            do {
+                taskname=resultSet2.getString(1);
+            } while (resultSet2.moveToNext());
+        }
+
+        resultSet2.close();
+        mydatabase2.close();
+
+
+        if(taskname.equals("基本資料")) {
             qq.setVisibility(View.GONE);
             qq4.setVisibility(View.GONE);
             BootstrapButton qq3 = (BootstrapButton) findViewById(R.id.button3);
@@ -99,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout lo2 = (LinearLayout) findViewById(R.id.lo2);
             lo2.setVisibility(View.GONE);
         }
-        else if(t1.equals("22333")) {
+        else if(taskname.equals("問卷")) {
             qq1.setVisibility(View.GONE);
             qq4.setVisibility(View.GONE);
             BootstrapButton qq3 = (BootstrapButton) findViewById(R.id.button3);
@@ -108,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout lo2 = (LinearLayout) findViewById(R.id.lo2);
             lo1.setVisibility(View.GONE);
         }
-        else if(t1.equals("44556")) {
+        else if(taskname.equals("錄音")) {
             qq.setVisibility(View.GONE);
             qq1.setVisibility(View.GONE);
             qq4.setVisibility(View.GONE);

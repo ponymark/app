@@ -415,6 +415,12 @@
         <item name="D218">99.遺漏值</item>
     </array>
 
+    <array name="sex">
+        <item name="male">男</item>
+        <item name="female">女</item>
+    </array>
+
+
     <string name="input1">請輸入測試人員id:</string>
     <string name="input2">請輸入受測者id:</string>
     <string name="title_activity_addlist">addlist</string>

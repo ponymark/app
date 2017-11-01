@@ -20,13 +20,15 @@ public class myadapter extends BaseAdapter {
     private String[] mSubWords;
     private int[] mIcons;
     private  String minterviewer;
+    String mtaskname;
 
-    public myadapter(String[] words,String[] subwords,int[] icons,String interviewer) {
+    public myadapter(String[] words,String[] subwords,int[] icons,String interviewer,String taskname) {
         mWords = words;
         mSubWords = subwords;
         mIcons = icons;
         minterviewer=interviewer;
         mList = new ArrayList<>();
+        mtaskname=taskname;
     }
     public void addItem(String title,String subtitle,Integer i){
 
@@ -79,15 +81,15 @@ public class myadapter extends BaseAdapter {
             BootstrapLabel icon = (BootstrapLabel) convertView.findViewById(R.id.imgb);
 
             //由interviewer決定資料類型
-            if(minterviewer.equals("12345")){
+            if(mtaskname.equals("基本資料")){
                 //基本
                 icon.setText("基本");
             }
-            else if(minterviewer.equals("22333")){
+            else if(mtaskname.equals("問卷")){
                 //問卷
                 icon.setText("問卷");
             }
-            else if(minterviewer.equals("44556")){
+            else if(mtaskname.equals("錄音")){
                 //錄音
                 icon.setText("錄音");
             }

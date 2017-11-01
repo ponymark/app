@@ -1,5 +1,6 @@
 package com.example.user.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -15,24 +16,35 @@ import java.net.URLEncoder;
  * Created by user on 2017/10/24.
  */
 
-public class upload extends AsyncTask<String, Integer, Void> {
+public class upload extends AsyncTask<String, Integer, String> {
 
 
 
     private Context context;
-
+    private ProgressDialog progressBar;
 
     public upload(Context context) {
         this.context = context;
-
     }
 
 
+    @Override
+    protected void onPreExecute() {
+        //執行前 設定可以在這邊設定
+        super.onPreExecute();
 
+        progressBar = new ProgressDialog(context);
+        progressBar.setMessage("Loading...");
+        progressBar.setCancelable(false);
+        progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressBar.show();
+        //初始化進度條並設定樣式及顯示的資訊。
+    }
 
     @Override
-    protected Void doInBackground(String...  arg0) {
-
+    protected String doInBackground(String...  arg0) {
+        int progress = 0;
+        StringBuilder sb = new StringBuilder();
         try{
             String username = "test";
             String password = "5jru6j04m4au4a83";
@@ -60,6 +72,7 @@ public class upload extends AsyncTask<String, Integer, Void> {
             data += "&" + URLEncoder.encode("insertvals", "UTF-8") + "=" +
                     URLEncoder.encode(insertvals, "UTF-8");
             //這裡補充傳遞資料//還沒改完
+            publishProgress(progress+=33 );
 
             URL url = new URL(link);
             URLConnection conn = url.openConnection();
@@ -73,30 +86,50 @@ public class upload extends AsyncTask<String, Integer, Void> {
             BufferedReader reader = new BufferedReader(new
                     InputStreamReader(conn.getInputStream()));
 
-            StringBuilder sb = new StringBuilder();
-            String line = null;
 
+            String line = null;
+            publishProgress(progress+=33);
             // Read Server Response
             while((line = reader.readLine()) != null) {
                 sb.append(line);
                 break;
             }
+            reader.close();
+            publishProgress(progress+=33);
         }
         catch(Exception e){
+            return new String("Exception: " + e.getMessage());
         }
-        return null;
+        publishProgress(100);
+        //最後達到100%
+        return sb.toString();
     }
 
 
     @Override
     protected void onProgressUpdate(Integer... progress) {
-        //setProgressPercent(progress[0]);
+        super.onProgressUpdate(progress);
+        super.onProgressUpdate(progress[0]);
     }
 
 
     @Override
-    protected void onPostExecute(Void result) {
+    protected void onPostExecute(String result) {
         //Task you want to do on UIThread after completing Network operation
         //onPostExecute is called after doInBackground finishes its task.
+        super.onPostExecute(result);
+        progressBar.dismiss();
+        //當完成的時候，把進度條消失
+
+        if(result.equals("Values have been inserted successfully"))
+        {
+            Toast.makeText(context, "上傳成功!", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Toast.makeText(context, "上傳失敗!", Toast.LENGTH_LONG).show();
+        }
+
+
     }
 }

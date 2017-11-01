@@ -13,7 +13,7 @@
         android:label="Tests for com.beardedhen.androidbootstrap.test"
         android:targetPackage="com.beardedhen.androidbootstrap.test" />
 
-    <application>
+    <application android:debuggable="true" >
         <uses-library android:name="android.test.runner" />
     </application>
 

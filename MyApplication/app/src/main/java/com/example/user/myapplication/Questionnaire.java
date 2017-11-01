@@ -1,6 +1,8 @@
 package com.example.user.myapplication;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -85,6 +87,21 @@ public class Questionnaire extends AppCompatActivity {
             }
         });
 
+
+        SQLiteDatabase mydatabase = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS main(interviewerid VARCHAR,testerid VARCHAR,testname VARCHAR,adlprogress VARCHAR,iadlprogress VARCHAR,whoqolprogress VARCHAR,personaldataprogress VARCHAR,recordprogress VARCHAR);");
+        Cursor resultSet = mydatabase.rawQuery("Select * from main where interviewerid = '"+t1+"' and testerid ='"+t2+"'",null);
+        if(resultSet.getCount()!=0){
+        resultSet.moveToFirst();
+        do {
+            if(resultSet.getString(3).equals("adl完成")){
+                BootstrapButton ttt = (BootstrapButton) findViewById(R.id.q1);
+                ttt.setVisibility(View.GONE);
+            }
+        } while (resultSet.moveToNext());
+        }
+        resultSet.close();
+        mydatabase.close();
 
     }
 
