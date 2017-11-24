@@ -98,6 +98,14 @@ public class Questionnaire extends AppCompatActivity {
                 BootstrapButton ttt = (BootstrapButton) findViewById(R.id.q1);
                 ttt.setVisibility(View.GONE);
             }
+            if(resultSet.getString(4).equals("iadl完成")){
+                BootstrapButton ttt = (BootstrapButton) findViewById(R.id.q2);
+                ttt.setVisibility(View.GONE);
+            }
+            if(resultSet.getString(5).equals("whoqol完成")){
+                BootstrapButton ttt = (BootstrapButton) findViewById(R.id.q3);
+                ttt.setVisibility(View.GONE);
+            }
         } while (resultSet.moveToNext());
         }
         resultSet.close();

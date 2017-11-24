@@ -5,7 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.user.myapplication.IADL3">
-    <ScrollView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.beardedhen.androidbootstrap.BootstrapLabel
+            android:id="@+id/problem6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:bootstrapBrand="success"
+            app:bootstrapHeading="h1"
+            app:bootstrapText="test" />
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:bootstrapBrand="warning"
+            app:buttonMode="radio">
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/page10"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="上一頁"
+                app:bootstrapSize="lg" />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/page11"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="下一頁"
+                app:bootstrapSize="lg" />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+        <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -15,14 +50,6 @@
             android:orientation="vertical">
 
 
-            <com.beardedhen.androidbootstrap.BootstrapLabel
-                android:id="@+id/problem6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                app:bootstrapBrand="success"
-                app:bootstrapHeading="h1"
-                app:bootstrapText="test" />
             <com.beardedhen.androidbootstrap.BootstrapButtonGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,31 +106,9 @@
                     android:text="test"
                     app:bootstrapSize="lg" />
             </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
-            <com.beardedhen.androidbootstrap.BootstrapButtonGroup
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:bootstrapBrand="warning"
-                app:buttonMode="radio">
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/page10"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="上一頁"
-                    app:bootstrapSize="lg" />
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/page11"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="下一頁"
-                    app:bootstrapSize="lg" />
-            </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
 
         </LinearLayout>
     </ScrollView>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

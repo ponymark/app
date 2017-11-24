@@ -18,6 +18,13 @@
         app:bootstrapBrand="success"
         app:bootstrapHeading="h1"
         app:bootstrapText="test" />
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/whoqolsave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="儲存結果"
+            app:bootstrapSize="lg" />
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

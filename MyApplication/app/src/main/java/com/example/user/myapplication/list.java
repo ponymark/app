@@ -11,6 +11,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -25,7 +26,9 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class list extends AppCompatActivity  implements insertaction.insertactionListener ,FireMissilesDialogFragment3.listListener {
     private  ArrayList<String> TITLES =new ArrayList<String>();//受訪者id
@@ -88,7 +91,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
 
 
         SQLiteDatabase mydatabase = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS main(interviewerid VARCHAR,testerid VARCHAR,testname VARCHAR,adlprogress VARCHAR,iadlprogress VARCHAR,whoqolprogress VARCHAR,personaldataprogress VARCHAR,recordprogress VARCHAR);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS main(interviewerid VARCHAR,testerid VARCHAR,testname VARCHAR,adlprogress VARCHAR,iadlprogress VARCHAR,whoqolprogress VARCHAR,personaldataprogress VARCHAR,recordprogress VARCHAR,generateddate VARCHAR);");
         Cursor resultSet = mydatabase.rawQuery("Select * from main where interviewerid = '"+interviewerid+"'",null);
 
         if(resultSet.getCount()!=0){
@@ -164,7 +167,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
     }
 
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog,String name,String testid,String testname,String testsex,String testyear) {
+    public void onDialogPositiveClick(DialogFragment dialog,String name,String testid,String testname,String testsex,String testyear,String testmonth,String testday) {
 
         if(name.equals("insert")) {
 
@@ -174,7 +177,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
     }
 
     @Override
-    public void onDialogNegativeClick(DialogFragment dialog,String name ,String testid,String testname,String testsex,String testyear) {
+    public void onDialogNegativeClick(DialogFragment dialog,String name ,String testid,String testname,String testsex,String testyear,String testmonth,String testday) {
 
         if(name.equals("insert")) {
             SQLiteDatabase mydatabase2 = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
@@ -186,7 +189,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
 
 
             SQLiteDatabase mydatabase3 = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
-            mydatabase3.execSQL("CREATE TABLE IF NOT EXISTS relation(interviewerid VARCHAR,testerid VARCHAR,testergroup VARCHAR, testername VARCHAR,testersex VARCHAR,testeryear VARCHAR);");
+            mydatabase3.execSQL("CREATE TABLE IF NOT EXISTS relation(interviewerid VARCHAR,testerid VARCHAR,testergroup VARCHAR, testername VARCHAR,testersex VARCHAR,testeryear VARCHAR,testermonth VARCHAR,testerday VARCHAR,generateddate VARCHAR);");
 
             ContentValues contentValues2 = new ContentValues();
             contentValues2.put("interviewerid", interviewerid);
@@ -195,11 +198,17 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
             contentValues2.put("testername",testname );
             contentValues2.put("testersex", testsex);
             contentValues2.put("testeryear", testyear);
+            contentValues2.put("testermonth", testmonth);
+            contentValues2.put("testerday", testday);
+            String date =(new SimpleDateFormat("yyyy/MM/dd")).format(new Date());
+            contentValues2.put("generateddate", date);
+
+
             mydatabase3.insert("relation", null, contentValues2);
             mydatabase3.close();
 
             SQLiteDatabase mydatabase = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
-            mydatabase.execSQL("CREATE TABLE IF NOT EXISTS main(interviewerid VARCHAR,testerid VARCHAR,testname VARCHAR,adlprogress VARCHAR,iadlprogress VARCHAR,whoqolprogress VARCHAR,personaldataprogress VARCHAR,recordprogress VARCHAR);");
+            mydatabase.execSQL("CREATE TABLE IF NOT EXISTS main(interviewerid VARCHAR,testerid VARCHAR,testname VARCHAR,adlprogress VARCHAR,iadlprogress VARCHAR,whoqolprogress VARCHAR,personaldataprogress VARCHAR,recordprogress VARCHAR,generateddate VARCHAR);");
 
             ContentValues contentValues = new ContentValues();
             contentValues.put("interviewerid", interviewerid);
@@ -210,6 +219,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
             contentValues.put("whoqolprogress", "未開始");
             contentValues.put("personaldataprogress", "未開始");
             contentValues.put("recordprogress", "未開始");
+            contentValues.put("generateddate", date);
             mydatabase.insert("main", null, contentValues);
             //新增什麼資料? 可能是寫死在手機裡? 還是透過網路下載? 總之現在先隨機試試
             mydatabase.close();
@@ -350,7 +360,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
         //ArrayList<String> TITLES2 =new ArrayList<String>();
         //ArrayList<String> SUB_TITLES2 =new ArrayList<String>();
         SQLiteDatabase mydatabase = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS main(interviewerid VARCHAR,testerid VARCHAR,testname VARCHAR,adlprogress VARCHAR,iadlprogress VARCHAR,whoqolprogress VARCHAR,personaldataprogress VARCHAR,recordprogress VARCHAR);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS main(interviewerid VARCHAR,testerid VARCHAR,testname VARCHAR,adlprogress VARCHAR,iadlprogress VARCHAR,whoqolprogress VARCHAR,personaldataprogress VARCHAR,recordprogress VARCHAR,generateddate VARCHAR);");
         Cursor resultSet = mydatabase.rawQuery("Select * from main where interviewerid = '"+interviewerid+"' and testerid='"+item.split(" ")[0]+"'",null);
         String dc2="";
 
@@ -398,6 +408,12 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
             //....
             String dc3="";
             ArrayList<String> dc4=new ArrayList<String>();
+            ArrayList<String> dc42=new ArrayList<String>();
+            ArrayList<String> dc43=new ArrayList<String>();
+            String [] rr= new String[]{"test","test","test","test"};
+
+
+
             if(taskname.equals("基本資料")) {
 
             }
@@ -410,7 +426,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
                         resultSet2.moveToFirst();
                         do {
                             int cou=0;
-                            while(cou<13) {
+                            while(cou<14) {
                                 dc4.add(resultSet2.getString(cou));
                                 cou++;
                             }
@@ -422,24 +438,73 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
                     String [] hh=new String[ dc4.size() ];
                     dc4.toArray(hh);
 
-                    String temp="("+item.split(" ")[0].substring(1)//有bug如果是遺漏值99004就會只抓到9004
-                            +","+"'"+item.split(" ")[0].substring(0,1)+"'";//有bug 如果是遺漏值99004就會只抓到9
+                    String temp;
+
+
+                    if(item.split(" ")[0].substring(0,1).equals("9")){
+                        temp="("+item.split(" ")[0].substring(2)
+                                +","+"'"+item.split(" ")[0].substring(0,2)+"'";
+                    }
+                    else{
+                        temp="("+item.split(" ")[0].substring(1)
+                                +","+"'"+item.split(" ")[0].substring(0,1)+"'";
+                    }
+
 
                             for(int gh=3;gh<=12;gh++)
                             {
                                 temp+=","+hh[gh];
                             }
 
-                            temp+=",'"+interviewerid+"')";
+                    temp+=",'"+interviewerid+"','"+hh[13]+"')";
 
-                    p1("app","203.64.84.32","w2017_a","(id,groupid,A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,interviewerid)",temp);
+                    rr[0]=p1("app","203.64.84.32","w2017_a","(id,groupid,A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,interviewerid,generateddate)",temp);
                     //p1(String databasename, String servername,String tablename,String insertcols,String insertvals)
                     //String insertcols="";//"(FirstName, LastName, Age)"
                     //String insertvals="";//"('admin', 'admin','adminstrator')"
 
                 }
                 if(dc2.split(" ")[1].equals("iadl完成")){
+                    SQLiteDatabase mydatabase2 = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+                    Cursor resultSet2 = mydatabase2.rawQuery("Select * from iadl where interviewerid = '"+interviewerid+"' and testerid='"+item.split(" ")[0]+"'",null);
 
+                    if(resultSet2.getCount()!=0){
+                        resultSet2.moveToFirst();
+                        do {
+                            int cou=0;
+                            while(cou<12) {
+                                dc42.add(resultSet2.getString(cou));
+                                cou++;
+                            }
+                        } while (resultSet2.moveToNext());
+                    }
+                    resultSet2.close();
+                    mydatabase2.close();
+
+                    String [] hh=new String[ dc42.size() ];
+                    dc42.toArray(hh);
+
+                    String temp;
+
+
+                    if(item.split(" ")[0].substring(0,1).equals("9")){
+                        temp="("+item.split(" ")[0].substring(2)
+                                +","+"'"+item.split(" ")[0].substring(0,2)+"'";
+                    }
+                    else{
+                        temp="("+item.split(" ")[0].substring(1)
+                                +","+"'"+item.split(" ")[0].substring(0,1)+"'";
+                    }
+
+
+                    for(int gh=3;gh<=10;gh++)
+                    {
+                        temp+=","+hh[gh];
+                    }
+
+                    temp+=",'"+interviewerid+"','"+hh[11]+"')";
+
+                    rr[1]=p1("app","203.64.84.32","w2017_b","(id,groupid,B1,B2,B3,B4,B5,B6,B7,B8,interviewerid,generateddate)",temp);
                 }
                 if(dc2.split(" ")[2].equals("whoqol完成")){
 
@@ -453,13 +518,22 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
 
             ArrayList<String> dc5=new ArrayList<String>();
             SQLiteDatabase mydatabase3 = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
-            Cursor resultSet3 = mydatabase3.rawQuery("Select * from relation where interviewerid = '"+interviewerid+"' and testerid='"+item.split(" ")[0].substring(1)+"' and testergroup='"+item.split(" ")[0].substring(0,1)+"'",null);
-            //有bug如果是遺漏值99004就會只抓到9004//有bug 如果是遺漏值99004就會只抓到9
+
+
+            Cursor resultSet3;
+
+            if(item.split(" ")[0].substring(0,1).equals("9")){
+                resultSet3 = mydatabase3.rawQuery("Select * from relation where interviewerid = '"+interviewerid+"' and testerid='"+item.split(" ")[0].substring(2)+"' and testergroup='"+item.split(" ")[0].substring(0,2)+"'",null);
+            }
+            else{
+                resultSet3 = mydatabase3.rawQuery("Select * from relation where interviewerid = '"+interviewerid+"' and testerid='"+item.split(" ")[0].substring(1)+"' and testergroup='"+item.split(" ")[0].substring(0,1)+"'",null);
+            }
+
             if(resultSet3.getCount()!=0){
                 resultSet3.moveToFirst();
                 do {
                     int cou=0;
-                    while(cou<6) {
+                    while(cou<8) {
                         dc5.add(resultSet3.getString(cou));
                         cou++;
                     }
@@ -473,9 +547,9 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
 
             String temp2="(";
 
-            for(int gh=0;gh<6;gh++)
+            for(int gh=0;gh<7;gh++)
             {
-                if(gh!=5) {
+                if(gh!=6) {
                     if(gh==1){
 
                         temp2 += hh2[gh] + ",";
@@ -491,7 +565,7 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
 
             temp2+=")";
 
-            p1("app","203.64.84.32","relation","(interviewerid,testerid,testergroup,testername,testersex,testeryear)",temp2);
+            rr[3]=p1("app","203.64.84.32","relation","(interviewerid,testerid,testergroup,testername,testersex,testeryear,generateddate)",temp2);
 
             /*
             Intent intent = new Intent();
@@ -505,7 +579,62 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
             startActivity(intent);
             list.this.finish();
 */
+            String bh="";
 
+            for(int y=0;y<4;y++){
+                if(rr[y].equals("test")){
+
+                }
+                else if(rr[y].equals("Values have been inserted successfully")){
+                    if(taskname.equals("問卷")){
+                        if(y==0){
+                            bh+="ADL成功上傳\n";
+                        }
+                        else if(y==1){
+                            bh+="IADL成功上傳\n";
+                        }
+                        else if(y==2){
+                            bh+="WHOQOL成功上傳\n";
+                        }
+                        else if(y==3){
+                            bh+="關係資料成功上傳\n";
+                        }
+                    }
+                    if(taskname.equals("基本資料")){
+                        if(y==0){
+                            bh+="基本資料成功上傳\n";
+                        }
+                        else if(y==1){
+                            bh+="關係資料成功上傳\n";
+                        }
+                    }
+                }
+                else {
+                    if(taskname.equals("問卷")){
+                        if(y==0){
+                            bh+="ADL失敗上傳\n";
+                        }
+                        else if(y==1){
+                            bh+="IADL失敗上傳\n";
+                        }
+                        else if(y==2){
+                            bh+="WHOQOL失敗上傳\n";
+                        }
+                        else if(y==3){
+                            bh+="關係資料失敗上傳\n";
+                        }
+                    }
+                    if(taskname.equals("基本資料")){
+                        if(y==0){
+                            bh+="基本資料失敗上傳\n";
+                        }
+                        else if(y==1){
+                            bh+="關係資料失敗上傳\n";
+                        }
+                    }
+                }
+            }
+            Toast.makeText(this,bh+"上傳動作結束", Toast.LENGTH_LONG).show();
         }
     }
     @Override
@@ -533,11 +662,36 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
     }
 
 
-public void p1(String databasename, String servername,String tablename,String insertcols,String insertvals){
-    new upload(this).execute(databasename,servername,tablename,insertcols,insertvals);
+public String p1(String databasename, String servername,String tablename,String insertcols,String insertvals){
+   try {
+       upload temp = new upload(this);
+       String tt = temp.execute(databasename, servername, tablename, insertcols, insertvals).get();
+       return  tt;
+   }
+   catch (Exception e){
+        return "error";
+   }
     //Toast.makeText(list.this, result, Toast.LENGTH_LONG).show();
 }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            Intent intent = new Intent();
+            intent.setClass(list.this, list.class);
 
+            Bundle bundle = new Bundle();
+
+            bundle.putString("測試者id", interviewerid);//
+
+            intent.putExtras(bundle);
+
+            startActivity(intent);
+            list.this.finish();
+        }
+
+
+        return super.onKeyDown(keyCode, event);
+    }
 
 }

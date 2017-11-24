@@ -82,6 +82,7 @@ public class ADL3 extends AppCompatActivity {
         t1=bundle.getString("測試者id");
         t2=bundle.getString("受訪者id");
         init();
+        setTitle(getResources().getIdentifier("adlprogress"+counter, "string", getPackageName()));
 
         BootstrapButton next=(BootstrapButton) findViewById(R.id.page5);
         next.setOnCheckedChangedListener(new BootstrapButton.OnCheckedChangedListener(){

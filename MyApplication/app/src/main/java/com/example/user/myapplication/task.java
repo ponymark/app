@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -64,8 +65,10 @@ public class task extends AppCompatActivity {
             @Override
             public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked) {
                 if (isChecked) {
-
-
+                            Intent intent = new Intent();
+                            intent.setClass(task.this, input.class);
+                            startActivity(intent);
+                            task.this.finish();
                 }}
         });
         BootstrapButton future=(BootstrapButton) findViewById(R.id.future);
@@ -111,5 +114,17 @@ public class task extends AppCompatActivity {
         BootstrapButton bt1=(BootstrapButton )findViewById(id);
         bt1.setBootstrapSize(t);
 
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            Intent intent = new Intent();
+            intent.setClass(task.this, input.class);
+            startActivity(intent);
+            task.this.finish();
+        }
+
+
+        return super.onKeyDown(keyCode, event);
     }
 }

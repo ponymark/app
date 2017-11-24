@@ -360,6 +360,27 @@
     <string name="progress27">目前進度\t:\t27/28</string>
     <string name="progress28">目前進度\t:\t28/28</string>
 
+    <string name="iadlprogress1">目前進度\t:\t1/8</string>
+    <string name="iadlprogress2">目前進度\t:\t2/8</string>
+    <string name="iadlprogress3">目前進度\t:\t3/8</string>
+    <string name="iadlprogress4">目前進度\t:\t4/8</string>
+    <string name="iadlprogress5">目前進度\t:\t5/8</string>
+    <string name="iadlprogress6">目前進度\t:\t6/8</string>
+    <string name="iadlprogress7">目前進度\t:\t7/8</string>
+    <string name="iadlprogress8">目前進度\t:\t8/8</string>
+
+
+    <string name="adlprogress1">目前進度\t:\t1/10</string>
+    <string name="adlprogress2">目前進度\t:\t2/10</string>
+    <string name="adlprogress3">目前進度\t:\t3/10</string>
+    <string name="adlprogress4">目前進度\t:\t4/10</string>
+    <string name="adlprogress5">目前進度\t:\t5/10</string>
+    <string name="adlprogress6">目前進度\t:\t6/10</string>
+    <string name="adlprogress7">目前進度\t:\t7/10</string>
+    <string name="adlprogress8">目前進度\t:\t8/10</string>
+    <string name="adlprogress9">目前進度\t:\t9/10</string>
+    <string name="adlprogress10">目前進度\t:\t10/10</string>
+
     <array name="D8">
         <item name="D81">A.花蓮市</item>
         <item name="D82">B.鳳林鎮</item>
@@ -416,12 +437,61 @@
     </array>
 
     <array name="sex">
-        <item name="male">男</item>
-        <item name="female">女</item>
+        <item name="male">1.男</item>
+        <item name="female">2.女</item>
+        <item name="99">99.遺漏值</item>
     </array>
 
 
     <string name="input1">請輸入測試人員id:</string>
     <string name="input2">請輸入受測者id:</string>
     <string name="title_activity_addlist">addlist</string>
+
+    <array name="D9">
+        <item name="D91">1.一般戶</item>
+        <item name="D92">2.中低收入戶</item>
+        <item name="D93">3.低收入戶</item>
+        <item name="D94">99.遺漏值</item>
+    </array>
+
+    <array name="D10">
+        <item name="D101">1.10,000元以下</item>
+        <item name="D102">2.10,000元~20,000元</item>
+        <item name="D103">3.20,000元~30,000元</item>
+        <item name="D104">4.30,000元~40,000元</item>
+        <item name="D105">5.40,000元~50,000元</item>
+        <item name="D106">6.50,000元以上</item>
+        <item name="D107">99.遺漏值</item>
+    </array>
+
+    <array name="D11">
+        <item name="D111">A.未婚</item>
+        <item name="D112">B.有配偶或同居人</item>
+        <item name="D113">C.分居或離婚</item>
+        <item name="D114">D.喪偶</item>
+        <item name="D115">99.遺漏值</item>
+    </array>
+
+    <array name="D12">
+        <item name="D121">1.不識字</item>
+        <item name="D122">2.自修(識字)</item>
+        <item name="D123">3.國小</item>
+        <item name="D124">4.國(初)中</item>
+        <item name="D125">5.高中職(肄)業</item>
+        <item name="D126">6.專科(肄)畢</item>
+        <item name="D127">5.大學(肄)畢</item>
+        <item name="D128">6.研究所或以上</item>
+        <item name="D129">99.遺漏值</item>
+    </array>
+
+    <array name="D13">
+        <item name="D131">1.無</item>
+        <item name="D132">2.有</item>
+        <item name="D133">99.遺漏值</item>
+    </array>
+    <array name="D15">
+        <item name="D151">1.無</item>
+        <item name="D152">2.有</item>
+        <item name="D153">99.遺漏值</item>
+    </array>
 </resources>

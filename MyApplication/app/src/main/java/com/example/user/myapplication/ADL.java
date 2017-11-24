@@ -77,6 +77,7 @@ public class ADL extends AppCompatActivity {
         t2=bundle.getString("受訪者id");
         init();
 
+        setTitle(getResources().getIdentifier("adlprogress"+counter, "string", getPackageName()));
 
 
         BootstrapButton next=(BootstrapButton) findViewById(R.id.page1);
@@ -140,7 +141,7 @@ public class ADL extends AppCompatActivity {
                     }
                     else if(counter==10)
                     {
-                        intent.setClass(ADL.this, ADLANS.class);
+                        intent.setClass(ADL.this, ADL3.class);
                     }
 
                     Bundle bundle = new Bundle();

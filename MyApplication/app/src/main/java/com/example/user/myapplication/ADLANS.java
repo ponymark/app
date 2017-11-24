@@ -12,6 +12,9 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ADLANS extends AppCompatActivity {
     String t1;
     String t2;
@@ -75,7 +78,7 @@ public class ADLANS extends AppCompatActivity {
 
 
                 SQLiteDatabase mydatabase = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
-                mydatabase.execSQL("CREATE TABLE IF NOT EXISTS adl(interviewerid VARCHAR,testerid VARCHAR,progress VARCHAR,A1 VARCHAR,A2 VARCHAR,A3 VARCHAR,A4 VARCHAR, A5 VARCHAR,A6 VARCHAR,A7 VARCHAR,A8 VARCHAR,A9 VARCHAR,A10 VARCHAR);");
+                mydatabase.execSQL("CREATE TABLE IF NOT EXISTS adl(interviewerid VARCHAR,testerid VARCHAR,progress VARCHAR,A1 VARCHAR,A2 VARCHAR,A3 VARCHAR,A4 VARCHAR, A5 VARCHAR,A6 VARCHAR,A7 VARCHAR,A8 VARCHAR,A9 VARCHAR,A10 VARCHAR,generateddate VARCHAR);");
 
                 ContentValues contentValues = new ContentValues();
                 contentValues.put("interviewerid", t1);
@@ -85,6 +88,11 @@ public class ADLANS extends AppCompatActivity {
                 for(int i=0;i<result.length;i++){
                     contentValues.put("A"+(i+1), result[i]);
                 }
+
+
+
+                String date =(new SimpleDateFormat("yyyy/MM/dd")).format(new Date());
+                contentValues.put("generateddate", date);
 
                 mydatabase.insert("adl", null, contentValues);
 

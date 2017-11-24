@@ -123,11 +123,11 @@ public class upload extends AsyncTask<String, Integer, String> {
 
         if(result.equals("Values have been inserted successfully"))
         {
-            Toast.makeText(context, "上傳成功!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "上傳成功!", Toast.LENGTH_LONG).show();
         }
         else
         {
-            Toast.makeText(context, "上傳失敗!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "上傳失敗!", Toast.LENGTH_LONG).show();
         }
 
 

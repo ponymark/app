@@ -30,8 +30,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class insertaction extends DialogFragment {
 
     public interface insertactionListener {
-        public void onDialogPositiveClick(DialogFragment dialog,String name,String testid,String testname,String testsex,String testyear);
-        public void onDialogNegativeClick(DialogFragment dialog,String name,String testid,String testname,String testsex,String testyear);
+        public void onDialogPositiveClick(DialogFragment dialog,String name,String testid,String testname,String testsex,String testyear,String testmonth,String testday);
+        public void onDialogNegativeClick(DialogFragment dialog,String name,String testid,String testname,String testsex,String testyear,String testmonth,String testday);
     }
     insertactionListener mListener;
 
@@ -50,7 +50,7 @@ public class insertaction extends DialogFragment {
 
 
 
-    String group;
+    String group,sex;
 
 
     @Override
@@ -58,7 +58,7 @@ public class insertaction extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         final TextView text1 = new TextView(getActivity());
-        text1.setText("姓名:");
+        text1.setText("姓名(遺漏值輸入99):");
         text1.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);
 
         final TextView text2 = new TextView(getActivity());
@@ -74,8 +74,19 @@ public class insertaction extends DialogFragment {
         text4.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);
 
         final TextView text5 = new TextView(getActivity());
-        text5.setText("年次:");
+        text5.setText("出生年(遺漏值輸入99):");
         text5.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);
+
+        final TextView text6 = new TextView(getActivity());
+        text6.setText("出生月(遺漏值輸入99):");
+        text6.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);
+
+        final TextView text7 = new TextView(getActivity());
+        text7.setText("出生日(遺漏值輸入99):");
+        text7.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);
+
+
+
 
         final EditText input = new EditText(getActivity());
         input.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -91,10 +102,18 @@ public class insertaction extends DialogFragment {
         final EditText input3 = new EditText(getActivity());
         input3.setInputType(InputType.TYPE_CLASS_TEXT);
 
+        final Spinner spinner2 = new Spinner(getActivity());
+        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.sex));
+        spinner2.setAdapter(dataAdapter2);
 
         final EditText input4 = new EditText(getActivity());
         input4.setInputType(InputType.TYPE_CLASS_NUMBER);
 
+        final EditText input5 = new EditText(getActivity());
+        input5.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+        final EditText input6 = new EditText(getActivity());
+        input6.setInputType(InputType.TYPE_CLASS_NUMBER);
 
         Context context = getActivity();
         LinearLayout layout = new LinearLayout(context);
@@ -110,29 +129,36 @@ public class insertaction extends DialogFragment {
         //layout.addView(input2);
 
         layout.addView(text4);
-        layout.addView(input3);
+        layout.addView(spinner2);
 
         layout.addView(text5);
         layout.addView(input4);
 
-        builder.setTitle("請輸入受訪者姓名與id!")
+        layout.addView(text6);
+        layout.addView(input5);
+
+        layout.addView(text7);
+        layout.addView(input6);
+        builder.setTitle("請輸入受訪者資料!")
                 .setView(layout)
         ;
         builder.setNegativeButton("新增活動", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                if(input.getText().toString().equals("")||input3.getText().toString().equals("")||input4.getText().toString().equals("")){
+                if(input.getText().toString().equals("")||input4.getText().toString().equals("")||input5.getText().toString().equals("")||input6.getText().toString().equals("")){
                     Toast.makeText(getActivity(), "不得留空!\n請重填!", Toast.LENGTH_LONG).show();
                 }
                 else{
                     String temp = group.split("\\.")[0];
-                    mListener.onDialogNegativeClick(insertaction.this,"insert",temp,input.getText().toString(),input3.getText().toString(),input4.getText().toString());
+                    String temp2 = sex.split("\\.")[0];
+                    mListener.onDialogNegativeClick(insertaction.this,"insert",temp,input.getText().toString(),temp2,input4.getText().toString(),input5.getText().toString(),input6.getText().toString());
                 }
             }
         });
         builder.setPositiveButton("放棄新增", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 String temp = group.split("\\.")[0];
-                mListener.onDialogPositiveClick(insertaction.this,"insert",temp,input.getText().toString(),input3.getText().toString(),input4.getText().toString());
+                String temp2 = sex.split("\\.")[0];
+                mListener.onDialogPositiveClick(insertaction.this,"insert",temp,input.getText().toString(),temp2,input4.getText().toString(),input5.getText().toString(),input6.getText().toString());
             }
         });
 
@@ -145,6 +171,14 @@ public class insertaction extends DialogFragment {
             public void onNothingSelected(AdapterView<?> parent) { }
         });
 
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
+            {
+                Object obj = parent.getItemAtPosition(pos);
+                sex=obj.toString();
+            }
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
         return builder.create();
     }
 }

@@ -141,12 +141,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK){
             Intent intent = new Intent();
-            intent.setClass(MainActivity.this, MainActivity.class);
+            intent.setClass(MainActivity.this, list.class);
 
             Bundle bundle = new Bundle();
 
             bundle.putString("測試者id",t1 );//
-            bundle.putString("受訪者id",t2);//
+            //bundle.putString("受訪者id",t2);//
             intent.putExtras(bundle);
             startActivity(intent);
             MainActivity.this.finish();

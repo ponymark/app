@@ -18,7 +18,8 @@
             android:layout_weight="4"
             app:bootstrapBrand="info"
             app:bootstrapHeading="h1"
-            app:bootstrapText="test" />
+            app:bootstrapText="test"
+            android:clickable="false"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -34,7 +35,8 @@
                 style="@style/CustomTextView"
                 app:bootstrapBrand="info"
                 app:bootstrapHeading="h5"
-                app:bootstrapText="test" />
+                app:bootstrapText="test"
+                android:clickable="false"/>
             <com.beardedhen.androidbootstrap.BootstrapLabel
                 android:id="@+id/sub_titleb"
                 android:layout_width="wrap_content"
@@ -42,7 +44,8 @@
                 style="@style/CustomTextView"
                 app:bootstrapBrand="info"
                 app:bootstrapHeading="h6"
-                app:bootstrapText="test" />
+                app:bootstrapText="test"
+                android:clickable="false"/>
         </LinearLayout>
 
 

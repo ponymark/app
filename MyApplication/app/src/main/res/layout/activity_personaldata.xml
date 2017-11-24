@@ -4,66 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.myapplication.personaldata">
-
+    tools:context="com.example.user.myapplication.personaldata"
+    android:focusable="true"
+    android:focusableInTouchMode="true">>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:fillViewport="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
-        <LinearLayout
+        android:orientation="vertical">
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/d42"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <com.beardedhen.androidbootstrap.BootstrapLabel
-                android:id="@+id/yyy"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:gravity="center"
-                app:bootstrapBrand="success"
-                app:bootstrapHeading="h1"
-                app:bootstrapText="族別" />
-            <com.beardedhen.androidbootstrap.BootstrapDropDown
-                android:id="@+id/yyy2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:layout_marginLeft="8dp"
-                app:bootstrapText="選擇"
-                app:bootstrapBrand="regular"
-                app:roundedCorners="true"
-                app:bootstrapSize="xl"
-                app:dropdownResource="@array/D2"
-                app:bootstrapExpandDirection="down"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <com.beardedhen.androidbootstrap.BootstrapLabel
-                android:id="@+id/ttt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:gravity="center"
-                app:bootstrapBrand="success"
-                app:bootstrapHeading="h1"
-                app:bootstrapText="居住地" />
-            <com.beardedhen.androidbootstrap.BootstrapDropDown
-                android:id="@+id/ttt2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:layout_marginLeft="8dp"
-                app:bootstrapText="選擇"
-                app:bootstrapBrand="regular"
-                app:roundedCorners="true"
-                app:bootstrapSize="xl"
-                app:dropdownResource="@array/D8"
-                app:bootstrapExpandDirection="down"/>
-        </LinearLayout>
+            android:layout_marginLeft="8dp"
+            app:bootstrapSize="xl"
+            app:bootstrapBrand="info"
+            android:enabled="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="電話"
+            /><!--d4電話-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,7 +56,7 @@
             app:bootstrapSize="xl"
             app:dropdownResource="@array/D7"
             app:bootstrapExpandDirection="down"/>
-        </LinearLayout>
+        </LinearLayout> <!--d7行業-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,8 +78,358 @@
                 app:bootstrapSize="xl"
                 app:bootstrapBrand="info"
                 android:enabled="false"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 />
-        </LinearLayout>
+        </LinearLayout> <!--d7_1其他行業-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/ttt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="居住地" />
+            <com.beardedhen.androidbootstrap.BootstrapDropDown
+                android:id="@+id/ttt2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="8dp"
+                app:bootstrapText="選擇"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                app:bootstrapSize="xl"
+                app:dropdownResource="@array/D8"
+                app:bootstrapExpandDirection="down"/>
+        </LinearLayout> <!--d8居住地-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="福利身份別" />
+            <com.beardedhen.androidbootstrap.BootstrapDropDown
+                android:id="@+id/d92"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="8dp"
+                app:bootstrapText="選擇"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                app:bootstrapSize="xl"
+                app:dropdownResource="@array/D9"
+                app:bootstrapExpandDirection="down"/>
+        </LinearLayout> <!--d9福利身分-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d91"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="福利身份別其他" />
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/d912"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="5"
+                app:bootstrapSize="xl"
+                app:bootstrapBrand="info"
+                android:enabled="false"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
+        </LinearLayout> <!--d9_1福利身分-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="個人月收入" />
+            <com.beardedhen.androidbootstrap.BootstrapDropDown
+                android:id="@+id/d102"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="8dp"
+                app:bootstrapText="選擇"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                app:bootstrapSize="xl"
+                app:dropdownResource="@array/D10"
+                app:bootstrapExpandDirection="down"/>
+        </LinearLayout> <!--d10-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="婚姻狀況" />
+            <com.beardedhen.androidbootstrap.BootstrapDropDown
+                android:id="@+id/d112"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="8dp"
+                app:bootstrapText="選擇"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                app:bootstrapSize="xl"
+                app:dropdownResource="@array/D11"
+                app:bootstrapExpandDirection="down"/>
+        </LinearLayout> <!--d11-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d111"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="婚姻狀況，其他" />
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/d1112"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="5"
+                app:bootstrapSize="xl"
+                app:bootstrapBrand="info"
+                android:enabled="false"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
+        </LinearLayout> <!--d11_1-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="教育程度" />
+            <com.beardedhen.androidbootstrap.BootstrapDropDown
+                android:id="@+id/d122"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="8dp"
+                app:bootstrapText="選擇"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                app:bootstrapSize="xl"
+                app:dropdownResource="@array/D12"
+                app:bootstrapExpandDirection="down"/>
+        </LinearLayout> <!--d12-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d13a"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="有無抽菸之習慣" />
+            <com.beardedhen.androidbootstrap.BootstrapDropDown
+                android:id="@+id/d13a2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="8dp"
+                app:bootstrapText="選擇"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                app:bootstrapSize="xl"
+                app:dropdownResource="@array/D13"
+                app:bootstrapExpandDirection="down"/>
+        </LinearLayout> <!--d13a-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d13b"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="有無喝酒之習慣" />
+            <com.beardedhen.androidbootstrap.BootstrapDropDown
+                android:id="@+id/d13b2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="8dp"
+                app:bootstrapText="選擇"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                app:bootstrapSize="xl"
+                app:dropdownResource="@array/D13"
+                app:bootstrapExpandDirection="down"/>
+        </LinearLayout> <!--d13b-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d13c"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="有無嚼食檳榔之習慣" />
+            <com.beardedhen.androidbootstrap.BootstrapDropDown
+                android:id="@+id/d13c2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="8dp"
+                app:bootstrapText="選擇"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                app:bootstrapSize="xl"
+                app:dropdownResource="@array/D13"
+                app:bootstrapExpandDirection="down"/>
+        </LinearLayout> <!--d13c-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d14a"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="每日的工作時數" />
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/d14a2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="5"
+                app:bootstrapSize="xl"
+                app:bootstrapBrand="info"
+                android:enabled="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
+        </LinearLayout> <!--d14a-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d14b"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="每日的睡眠時數" />
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/d14b2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="5"
+                app:bootstrapSize="xl"
+                app:bootstrapBrand="info"
+                android:enabled="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
+        </LinearLayout> <!--14b-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/d15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                app:bootstrapBrand="success"
+                app:bootstrapHeading="h1"
+                app:bootstrapText="中午是否有午休" />
+            <com.beardedhen.androidbootstrap.BootstrapDropDown
+                android:id="@+id/d152"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="8dp"
+                app:bootstrapText="選擇"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                app:bootstrapSize="xl"
+                app:dropdownResource="@array/D15"
+                app:bootstrapExpandDirection="up"/>
+        </LinearLayout> <!--d15-->
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/personaldatasave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="儲存結果"
+            app:bootstrapSize="lg" />
     </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
