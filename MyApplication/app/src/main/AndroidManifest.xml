@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.user.myapplication">
+    package="com.zhanya73.user.myapplication">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,30 +12,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".input">
+        <activity android:name="com.zhanya73.user.myapplication.input">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Questionnaire" />
-        <activity android:name=".ADL" />
-        <activity android:name=".ADL2" />
-        <activity android:name=".ADL3" />
-        <activity android:name=".ADLANS" />
-        <activity android:name=".IADL" />
-        <activity android:name=".IADL2" />
-        <activity android:name=".IADL3" />
-        <activity android:name=".IADLANS" />
-        <activity android:name=".WHOQOL1" />
-        <activity android:name=".WHOQOLANS" />
-        <activity android:name=".personaldata" />
-        <activity android:name=".MainActivity" />
+        <activity android:name="com.zhanya73.user.myapplication.Questionnaire" />
+        <activity android:name="com.zhanya73.user.myapplication.ADL" />
+        <activity android:name="com.zhanya73.user.myapplication.ADL2" />
+        <activity android:name="com.zhanya73.user.myapplication.ADL3" />
+        <activity android:name="com.zhanya73.user.myapplication.ADLANS" />
+        <activity android:name="com.zhanya73.user.myapplication.IADL" />
+        <activity android:name="com.zhanya73.user.myapplication.IADL2" />
+        <activity android:name="com.zhanya73.user.myapplication.IADL3" />
+        <activity android:name="com.zhanya73.user.myapplication.IADLANS" />
+        <activity android:name="com.zhanya73.user.myapplication.WHOQOL1" />
+        <activity android:name="com.zhanya73.user.myapplication.WHOQOLANS" />
+        <activity android:name="com.zhanya73.user.myapplication.personaldata" />
+        <activity android:name="com.zhanya73.user.myapplication.MainActivity" />
         <activity
-            android:name=".list"
+            android:name="com.zhanya73.user.myapplication.list"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".task"></activity>
+        <activity android:name="com.zhanya73.user.myapplication.task"></activity>
     </application>
 
 </manifest>
