@@ -497,7 +497,46 @@ public class list extends AppCompatActivity  implements insertaction.insertactio
                     rr[1]=p1("app","203.64.84.32","w2017_b","(id,groupid,B1,B2,B3,B4,B5,B6,B7,B8,interviewerid,generateddate)",temp);
                 }
                 if(dc2.split(" ")[2].equals("whoqol完成")){
+                    SQLiteDatabase mydatabase2 = openOrCreateDatabase("myactivity",MODE_PRIVATE,null);
+                    Cursor resultSet2 = mydatabase2.rawQuery("Select * from whoqol where interviewerid = '"+interviewerid+"' and testerid='"+item.split(" ")[0]+"'",null);
 
+                    if(resultSet2.getCount()!=0){
+                        resultSet2.moveToFirst();
+                        do {
+                            int cou=0;
+                            while(cou<32) {
+                                dc43.add(resultSet2.getString(cou));
+                                cou++;
+                            }
+                        } while (resultSet2.moveToNext());
+                    }
+                    resultSet2.close();
+                    mydatabase2.close();
+
+                    String [] hh=new String[ dc43.size() ];
+                    dc43.toArray(hh);
+
+                    String temp;
+
+
+                    if(item.split(" ")[0].substring(0,1).equals("9")){
+                        temp="("+item.split(" ")[0].substring(2)
+                                +","+"'"+item.split(" ")[0].substring(0,2)+"'";
+                    }
+                    else{
+                        temp="("+item.split(" ")[0].substring(1)
+                                +","+"'"+item.split(" ")[0].substring(0,1)+"'";
+                    }
+
+
+                    for(int gh=3;gh<=30;gh++)
+                    {
+                        temp+=","+hh[gh];
+                    }
+
+                    temp+=",'"+interviewerid+"','"+hh[31]+"')";
+
+                    rr[2]=p1("app","203.64.84.32","w2017_c","(id,groupid,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,interviewerid,generateddate)",temp);
                 }
             }
             else if(taskname.equals("錄音")) {

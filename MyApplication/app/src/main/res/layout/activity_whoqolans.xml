@@ -6,25 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.zhanya73.user.myapplication.WHOQOLANS">
 
-    <ScrollView
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"
-        >
-    <com.beardedhen.androidbootstrap.BootstrapLabel
-        android:id="@+id/whoqolanswer"
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/whoqolsave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        app:bootstrapBrand="success"
-        app:bootstrapHeading="h1"
-        app:bootstrapText="test" />
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/whoqolsave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="儲存結果"
-            app:bootstrapSize="lg" />
-    </ScrollView>
+        android:text="儲存結果"
+        app:bootstrapSize="lg" />
 
 </android.support.constraint.ConstraintLayout>
